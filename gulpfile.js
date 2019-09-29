@@ -3,6 +3,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify");
 const babel = require("gulp-babel");
+const sourcemaps = require("gulp-sourcemaps");
 
 //default task
 gulp.task("default", ["styles", "copy-html", "copy-imgs", "scripts", "scripts-dist"], function() {
@@ -43,16 +44,20 @@ gulp.task("styles", function() {
 //deals with concating the scripts while in development mode
 gulp.task("scripts", function() {
 	gulp.src("js/*.js")
+	.pipe(sourcemaps.init())
 	.pipe(babel({presets: ['@babel/preset-env']}))
 	.pipe(concat('all.js'))
+	.pipe(sourcemaps.write())
 	.pipe(gulp.dest("dist/js"))
 });
 
 //deals with concating the scripts while in production mode
 gulp.task("scripts-dist", function() {
 	gulp.src("js/*.js")
+	.pipe(sourcemaps.init())
 	.pipe(babel({presets: ['@babel/preset-env']}))
 	.pipe(concat('all.js'))
 	.pipe(uglify())
+	.pipe(sourcemaps.write())
 	.pipe(gulp.dest("dist/js"))
 });
