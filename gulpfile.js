@@ -43,7 +43,7 @@ gulp.task("styles", function() {
 //deals with concating the scripts while in development mode
 gulp.task("scripts", function() {
 	gulp.src("js/*.js")
-	.pipe(babel())
+	.pipe(babel({presets: ['@babel/preset-env']}))
 	.pipe(concat('all.js'))
 	.pipe(gulp.dest("dist/js"))
 });
@@ -51,7 +51,7 @@ gulp.task("scripts", function() {
 //deals with concating the scripts while in production mode
 gulp.task("scripts-dist", function() {
 	gulp.src("js/*.js")
-	.pipe(babel())
+	.pipe(babel({presets: ['@babel/preset-env']}))
 	.pipe(concat('all.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest("dist/js"))
