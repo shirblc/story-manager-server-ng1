@@ -7,6 +7,7 @@ gulp.task("default", function() {
 });
 
 //sets gulp to add prefixes with Autoprefixer after Dreamweaver outputs the Sass filee to CSS
+//once the prefixer finishes its job, outputs the file to the distribution folder
 gulp.task("styles", function() {
 	gulp.src("css/*.css")
 	.pipe(autoprefixer({
@@ -15,3 +16,8 @@ gulp.task("styles", function() {
 	.pipe(gulp.dest('./dist/css'))
 });
 
+
+gulp.task("prepDistribution", function() {
+	gulp.src("index.html")
+	.pipe(gulp.dest('./dist'))
+});

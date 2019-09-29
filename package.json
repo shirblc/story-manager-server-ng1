@@ -14,5 +14,6 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.0"
-  }
+  },
+  "dependencies": {}
 }
