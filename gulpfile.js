@@ -16,8 +16,14 @@ gulp.task("styles", function() {
 	.pipe(gulp.dest('./dist/css'))
 });
 
-
-gulp.task("prepDistribution", function() {
+//copies the html to the disribution folder
+gulp.task("copy-html", function() {
 	gulp.src("index.html")
 	.pipe(gulp.dest('./dist'))
+});
+
+//copies the images folder to the distribution folder
+gulp.task("copy-imgs", function() {
+	gulp.src("img/*")
+	.pipe(gulp.dest("dist/img"))
 });
