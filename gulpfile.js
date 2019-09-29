@@ -1,10 +1,31 @@
 const gulp = require("gulp");
 const autoprefixer = require('gulp-autoprefixer');
+const concat = require("gulp-concat");
 
 //default task
-gulp.task("default", ["styles", "copy-html", "copy-imgs"], function() {
+gulp.task("default", ["styles", "copy-html", "copy-imgs", "scripts", "scripts-dist"], function() {
 	gulp.watch('css/*.css', ['styles']);
 	gulp.watch('/index.html', ['copy-html']);
+});
+
+//prepare for distribution
+gulp.task("dist", [
+	"copy-html",
+	"copy-imgs",
+	"styles",
+	"scripts-dist"
+]);
+
+//copies the html to the disribution folder
+gulp.task("copy-html", function() {
+	gulp.src("index.html")
+	.pipe(gulp.dest('./dist'))
+});
+
+//copies the images folder to the distribution folder
+gulp.task("copy-imgs", function() {
+	gulp.src("img/*")
+	.pipe(gulp.dest("dist/img"))
 });
 
 //sets gulp to add prefixes with Autoprefixer after Dreamweaver outputs the Sass filee to CSS
@@ -17,14 +38,12 @@ gulp.task("styles", function() {
 	.pipe(gulp.dest('./dist/css'))
 });
 
-//copies the html to the disribution folder
-gulp.task("copy-html", function() {
-	gulp.src("index.html")
-	.pipe(gulp.dest('./dist'))
+//deals with concating the scripts while in development mode
+gulp.task("scripts", function() {
+	
 });
 
-//copies the images folder to the distribution folder
-gulp.task("copy-imgs", function() {
-	gulp.src("img/*")
-	.pipe(gulp.dest("dist/img"))
+//deals with concating the scripts while in production mode
+gulp.task("scripts-dist", function() {
+	
 });
