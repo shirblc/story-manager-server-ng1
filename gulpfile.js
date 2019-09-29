@@ -2,8 +2,9 @@ const gulp = require("gulp");
 const autoprefixer = require('gulp-autoprefixer');
 
 //default task
-gulp.task("default", function() {
-  gulp.watch('css/*.css', ['styles']);
+gulp.task("default", ["styles", "copy-html", "copy-imgs"], function() {
+	gulp.watch('css/*.css', ['styles']);
+	gulp.watch('/index.html', ['copy-html']);
 });
 
 //sets gulp to add prefixes with Autoprefixer after Dreamweaver outputs the Sass filee to CSS
