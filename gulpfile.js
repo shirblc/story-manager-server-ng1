@@ -1,4 +1,6 @@
 const gulp = require("gulp");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify");
 const babel = require("gulp-babel");
@@ -37,6 +39,7 @@ gulp.task("styles", function() {
 	/*.pipe(autoprefixer({
         browsers: ["last 2 versions"]
       }))*/
+	.pipe(postcss(autoprefixer({browsers: ['last 1 version']})))
 	.pipe(gulp.dest('./dist/css'))
 });
 
