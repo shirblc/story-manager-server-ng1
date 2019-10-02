@@ -8,7 +8,7 @@ const sourcemaps = require("gulp-sourcemaps");
 const jasmineBrowser = require('gulp-jasmine-browser');
 
 //default task
-gulp.task("default", ["dist", "copy-html", "copy-imgs", "styles", "scripts", "scripts-dist", "tests"], function() {
+gulp.task("default", ["dist", "copy-html", "copy-imgs", "styles", "scripts", "scripts-dist", "tests", "browser-tests"], function() {
 	gulp.watch('css/*.css', ['styles']);
 	gulp.watch('/index.html', ['copy-html']);
 });
@@ -62,8 +62,16 @@ gulp.task("scripts-dist", function() {
 	.pipe(gulp.dest("dist/js"))
 });
 
+//automatic testing in the Jasmine headless browser
 gulp.task("tests", function() {
 	gulp.src("dist/js/all.js")
 	.pipe(jasmineBrowser.specRunner({ console: true }))
 	.pipe(jasmineBrowser.headless({ driver: 'chrome' }));
 });
+
+//testing in whatever browser you want to use; just enter "localhost:3001" in the address line
+gulp.task("browser-tests", function() {
+	gulp.src("dist/js/all.js")
+	.pipe(jasmineBrowser.specRunner())
+	.pipe(jasmineBrowser.server({ port: 3001 }));
+})
