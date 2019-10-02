@@ -5,9 +5,10 @@ const concat = require("gulp-concat");
 const uglify = require("gulp-uglify");
 const babel = require("gulp-babel");
 const sourcemaps = require("gulp-sourcemaps");
+const jasmineBrowser = require('gulp-jasmine-browser');
 
 //default task
-gulp.task("default", ["styles", "copy-html", "copy-imgs", "scripts", "scripts-dist"], function() {
+gulp.task("default", ["dist", "copy-html", "copy-imgs", "styles", "scripts", "scripts-dist", "tests"], function() {
 	gulp.watch('css/*.css', ['styles']);
 	gulp.watch('/index.html', ['copy-html']);
 });
@@ -59,4 +60,10 @@ gulp.task("scripts-dist", function() {
 	.pipe(uglify())
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest("dist/js"))
+});
+
+gulp.task("tests", function() {
+	gulp.src("dist/js/all.js")
+	.pipe(jasmineBrowser.specRunner({ console: true }))
+	.pipe(jasmineBrowser.headless({ driver: 'chrome' }));
 });
