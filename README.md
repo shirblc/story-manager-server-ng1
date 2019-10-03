@@ -25,7 +25,7 @@ The Developmnt Mode folder (parent folder) includes:
 3. **JS Folder** - For all scripts.
 4. **Node Modules Folder** - 
 5. **IMG Folder** - For all images.
-6. **Tests Folder** -
+6. **Tests Folder** - For Jasmine spec files.
 7. **Dist Folder** - See "Production Mode"
 
 As well as the files:
@@ -50,3 +50,4 @@ The site uses several tools to maximize compatibility:
 4. **Gulp-Concat** - A Gulp plugin which combines all the ES5 JavaScript (Babel's output) files into one file. For more info check the [Gulp-concat](https://www.npmjs.com/package/gulp-concat) page on NPM.
 5. **Gulp-Uglify** - A Gulp plugin which minimises the single JavaScript file (Concat's output). For more info check the [Gulp-uglify](https://www.npmjs.com/package/gulp-uglify) page on NPM.
 6. **Gulp-Sourcemaps** - A Gulp plugin utilizing the source maps tool. For more info check the [Gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) page on NPM.
+7. **Gulp-Jasmine-Browser** - A headless browser extension for the unit-testing tool Jasmine. The site also includes **Jasmine-core** and **Puppeteer** in order to execute Jasmine tests from the command line. For more info check the [Gulp-jasmine-browser](https://www.npmjs.com/package/gulp-jasmine-browser) page on NPM or the [Jasmine documentation](https://jasmine.github.io/) page.
