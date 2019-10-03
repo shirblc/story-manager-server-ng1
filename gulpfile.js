@@ -64,14 +64,14 @@ gulp.task("scripts-dist", function() {
 
 //automatic testing in the Jasmine headless browser
 gulp.task("tests", function() {
-	gulp.src("tests/specs.js")
+	gulp.src(["dist/js/all.js", "tests/specs.js"])
 	.pipe(jasmineBrowser.specRunner({ console: true }))
 	.pipe(jasmineBrowser.headless({ driver: 'chrome' }));
 });
 
 //testing in whatever browser you want to use; just enter "localhost:3001" in the address line
 gulp.task("browser-tests", function() {
-	gulp.src("tests/specs.js")
+	gulp.src(["dist/js/all.js", "tests/specs.js"])
 	.pipe(jasmineBrowser.specRunner())
 	.pipe(jasmineBrowser.server({ port: 3001 }));
 })
