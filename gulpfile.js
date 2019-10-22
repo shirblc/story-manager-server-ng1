@@ -5,6 +5,7 @@ const concat = require("gulp-concat");
 const uglify = require("gulp-uglify");
 const babel = require("gulp-babel");
 const sourcemaps = require("gulp-sourcemaps");
+const order = require("gulp-order");
 
 //default task
 gulp.task("default", ["styles", "copy-html", "copy-imgs", "scripts", "scripts-dist"], function() {
@@ -45,6 +46,7 @@ gulp.task("scripts", function() {
 	gulp.src("js/*.js")
 	.pipe(sourcemaps.init())
 	.pipe(babel({presets: ['@babel/preset-env']}))
+	.pipe(order([]))
 	.pipe(concat('all.js'))
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest("dist/js"))
@@ -55,6 +57,7 @@ gulp.task("scripts-dist", function() {
 	gulp.src("js/*.js")
 	.pipe(sourcemaps.init())
 	.pipe(babel({presets: ['@babel/preset-env']}))
+	.pipe(order([]))
 	.pipe(concat('all.js'))
 	.pipe(uglify())
 	.pipe(sourcemaps.write())
