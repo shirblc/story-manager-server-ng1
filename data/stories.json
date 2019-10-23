@@ -1,0 +1,14 @@
+{
+	"stories": [{
+		"id": 1,
+		"name": "Sample Story",
+		"synopsis": "Sample synopsis",
+		"chapters": [
+			{
+				"number": 1,
+				"title": "Sample Chapter",
+				"symopsis": "Sample synopsis"
+			}
+		]
+	}]
+}
