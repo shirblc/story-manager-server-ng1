@@ -1,1 +1,4 @@
-// JavaScript Document
+angular
+.module('StoryManager', [], function() {
+	
+})
