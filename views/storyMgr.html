@@ -1,0 +1,7 @@
+<div>
+	<h2> {{ storyMgr.storyName }} </h2>
+	<h3> The story so far... </h3>
+		<div ng-repeat="chapter in storyMgr.chapters">
+			<p> {{ chapter.synopsis }} </p>
+		</div>
+</div>
