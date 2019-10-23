@@ -6,7 +6,7 @@ Version 1.
 
 ## Desciption
 
-An empty site template for any use. Comes fully equipped with Gulp and several of its plugins (see Dependencies) to make your workflow quicker.
+An empty site template for any use. Comes fully equipped with Gulp and several of its plugins (see Dependencies) to make your workflow quicker. Largely based on Udacity's [Web Tooling and Automation](https://www.udacity.com/course/web-tooling-automation--ud892) course.
 
 **Important!** This version was built for Adobe Dreamweaver or Adobe Brackets users. Therefore it doesn't include several important tools:
 
@@ -23,15 +23,25 @@ An empty site template for any use. Comes fully equipped with Gulp and several o
 ### Master Branch
 
 1. Download or clone the repo.
-2. Run ```npm install```.
-3. Start building. Don't forget to add each JavaScript file you create to the concatenation order in the Gulp tasks 'scripts' and 'scripts-dist'.
+2. cd into the project directory.
+3. Run ```npm install```.
+4. Start building. Don't forget to add each JavaScript file you create to the concatenation order in the Gulp tasks 'scripts' and 'scripts-dist'.
 
 ### Unit-Testing-Gulp Branch
 
 1. Download or clone the repo.
-2. Run ```npm install```.
-3. Set up your tests in the Jasmine specs folder.
-4. Start building. Don't forget to add each JavaScript file you create to the concatenation order in the Gulp tasks 'scripts' and 'scripts-dist'.
+2. cd into the project directory.
+3. Run ```npm install```.
+4. Set up your tests in the Jasmine specs folder.
+5. Start building. Don't forget to add each JavaScript file you create to the concatenation order in the Gulp tasks 'scripts' and 'scripts-dist'.
+
+### Unit-Testing-Manual Branch
+
+1. Download or clone the repo.
+2. cd into the project directory.
+3. Run ```npm install```.
+4. Set up your tests in the Jasmine tests folder and get specRunner.html running.
+5. Start building. Don't forget to add each JavaScript file you create to the concatenation order in the Gulp tasks 'scripts' and 'scripts-dist'.
 
 ## Contents
 
@@ -43,7 +53,9 @@ The Developmnt Mode folder (parent folder) includes:
 2. **Sass Folder** - For the project's Sass files.
 3. **JS Folder** - For all scripts.
 4. **IMG Folder** - For all images.
-5. **Tests Folder** -
+5. **Tests Folder** (unit testing branches only) - For Jasmine spec files.
+	- unit-testing-gulp - Contains only the JavaScript specs file. The specRunner will open once you run the gulp testing task.
+	- unit-testing-manual - Contains the Jasmine library, the specRunner and whatever specs files you add.
 6. **Dist Folder** - See "Production Mode"
 
 As well as the files:
@@ -69,3 +81,7 @@ The site uses several tools to maximize compatibility:
 5. **Gulp-Uglify** - A Gulp plugin which minimises the single JavaScript file (Concat's output). For more info check the [Gulp-uglify](https://www.npmjs.com/package/gulp-uglify) page on NPM.
 6. **Gulp-Sourcemaps** - A Gulp plugin utilizing the source maps tool. For more info check the [Gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps) page on NPM.
 7. **Gulp-order** - A gulp plugin to set the order in which the JavaScript files will be concatenated. For more info, check the [Gulp-order](https://github.com/sirlantis/gulp-order) GitHub page.
+
+## Known Issues
+
+There are no current issues at the time.
