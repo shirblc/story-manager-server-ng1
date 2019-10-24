@@ -80,6 +80,13 @@ gulp.task("serve", function() {
 	});
 });
 
+//watcher task to watch files
+gulp.task("watcher", gulp.parallel("styles", "copy-html", "copy-views"), function() {
+	gulp.watch('css/*.css', ['styles']);
+	gulp.watch('/index.html', ['copy-html']);
+	gulp.watch('/views/*', ['copy-views']);
+});
+
 //prepare for distribution
 gulp.task("dist", gulp.parallel(
 	"copy-html",
