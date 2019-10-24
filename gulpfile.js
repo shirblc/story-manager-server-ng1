@@ -8,20 +8,6 @@ const sourcemaps = require("gulp-sourcemaps");
 const jasmineBrowser = require('gulp-jasmine-browser');
 const order = require("gulp-order");
 
-//default task
-gulp.task("default", ["dist", "copy-html", "copy-imgs", "styles", "scripts", "scripts-dist", "tests", "browser-tests"], function() {
-	gulp.watch('css/*.css', ['styles']);
-	gulp.watch('/index.html', ['copy-html']);
-});
-
-//prepare for distribution
-gulp.task("dist", [
-	"copy-html",
-	"copy-imgs",
-	"styles",
-	"scripts-dist"
-]);
-
 //copies the html to the disribution folder
 gulp.task("copy-html", function() {
 	gulp.src("index.html")
@@ -78,3 +64,17 @@ gulp.task("browser-tests", function() {
 	.pipe(jasmineBrowser.specRunner())
 	.pipe(jasmineBrowser.server({ port: 3001 }));
 })
+
+//prepare for distribution
+gulp.task("dist", gulp.parallel(
+	"copy-html",
+	"copy-imgs",
+	"styles",
+	"scripts-dist"
+));
+
+//default task
+gulp.task("default", gulp.parallel("dist", "copy-html", "copy-imgs", "styles", "scripts", "scripts-dist", "tests", "browser-tests"), function() {
+	gulp.watch('css/*.css', ['styles']);
+	gulp.watch('/index.html', ['copy-html']);
+});
