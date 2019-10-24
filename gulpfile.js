@@ -15,6 +15,12 @@ gulp.task("copy-html", function() {
 	.pipe(gulp.dest('./dist'))
 });
 
+//copies the views to the distribution folder
+gulp.task("copy-views", function() {
+	gulp.src("views/*")
+	.pipe(gulp.dest("./dist/views"))
+});
+
 //copies the images folder to the distribution folder
 gulp.task("copy-imgs", function() {
 	gulp.src("img/*")
@@ -72,7 +78,7 @@ gulp.task("serve", function() {
 			baseDir: "./"
 		}
 	});
-})
+});
 
 //prepare for distribution
 gulp.task("dist", gulp.parallel(
