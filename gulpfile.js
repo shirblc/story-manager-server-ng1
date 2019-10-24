@@ -11,38 +11,38 @@ const browserSync = require("browser-sync").create();
 
 //copies the html to the disribution folder
 gulp.task("copy-html", function() {
-	gulp.src("index.html")
+	return gulp.src("index.html")
 	.pipe(gulp.dest('./dist'))
 });
 
 //copies the views to the distribution folder
 gulp.task("copy-views", function() {
-	gulp.src("views/*")
+	return gulp.src("views/*")
 	.pipe(gulp.dest("./dist/views"))
 });
 
 //copies the images folder to the distribution folder
 gulp.task("copy-imgs", function() {
-	gulp.src("img/*")
+	return gulp.src("img/*")
 	.pipe(gulp.dest("dist/img"))
 });
 
 //sets gulp to add prefixes with Autoprefixer after Dreamweaver outputs the Sass filee to CSS
 //once the prefixer finishes its job, outputs the file to the distribution folder
 gulp.task("styles", function() {
-	gulp.src("css/*.css")
+	return gulp.src("css/*.css")
 	.pipe(postcss([autoprefixer()]))
 	.pipe(gulp.dest('./dist/css'))
 });
 
 gulp.task("copy-fonts", function() {
-	gulp.src("css/*.ttf")
+	return gulp.src("css/*.ttf")
 	.pipe(gulp.dest("./dist/css"))
 });
 
 //deals with concating the scripts while in development mode
 gulp.task("scripts", function() {
-	gulp.src("js/*.js")
+	return gulp.src("js/*.js")
 	.pipe(sourcemaps.init())
 	.pipe(babel({presets: ['@babel/preset-env']}))
 	.pipe(order([]))
@@ -53,7 +53,7 @@ gulp.task("scripts", function() {
 
 //deals with concating the scripts while in production mode
 gulp.task("scripts-dist", function() {
-	gulp.src("js/*.js")
+	return gulp.src("js/*.js")
 	.pipe(sourcemaps.init())
 	.pipe(babel({presets: ['@babel/preset-env']}))
 	.pipe(order([]))
