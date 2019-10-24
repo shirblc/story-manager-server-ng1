@@ -35,6 +35,11 @@ gulp.task("styles", function() {
 	.pipe(gulp.dest('./dist/css'))
 });
 
+gulp.task("copy-fonts", function() {
+	gulp.src("css/*.ttf")
+	.pipe(gulp.dest("./dist/css"))
+});
+
 //deals with concating the scripts while in development mode
 gulp.task("scripts", function() {
 	gulp.src("js/*.js")
@@ -81,8 +86,9 @@ gulp.task("serve", function() {
 });
 
 //watcher task to watch files
-gulp.task("watcher", gulp.parallel("styles", "copy-html", "copy-views"), function() {
+gulp.task("watcher", gulp.parallel("styles", "copy-html", "copy-views", "copy-fonts"), function() {
 	gulp.watch('css/*.css', ['styles']);
+	gulp.watch('css/*.ttf', ['copy-fonts']);
 	gulp.watch('/index.html', ['copy-html']);
 	gulp.watch('/views/*', ['copy-views']);
 });
