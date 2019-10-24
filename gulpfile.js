@@ -31,7 +31,7 @@ gulp.task("copy-imgs", function() {
 //once the prefixer finishes its job, outputs the file to the distribution folder
 gulp.task("styles", function() {
 	gulp.src("css/*.css")
-	.pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
+	.pipe(postcss([autoprefixer()]))
 	.pipe(gulp.dest('./dist/css'))
 });
 
