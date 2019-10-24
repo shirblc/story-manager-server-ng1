@@ -24,5 +24,6 @@ angular.module("StoryManager")
 	function setSelectedStory(numSelected)
 	{
 		selectedStory = numSelected;
+		librarian.setCurrentStoryNum(numSelected);
 	}
 }]);
