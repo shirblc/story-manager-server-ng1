@@ -7,6 +7,7 @@ const babel = require("gulp-babel");
 const sourcemaps = require("gulp-sourcemaps");
 const jasmineBrowser = require('gulp-jasmine-browser');
 const order = require("gulp-order");
+const browserSync = require("browser-sync").create();
 
 //copies the html to the disribution folder
 gulp.task("copy-html", function() {
@@ -63,6 +64,14 @@ gulp.task("browser-tests", function() {
 	gulp.src(["dist/js/all.js", "tests/specs.js"])
 	.pipe(jasmineBrowser.specRunner())
 	.pipe(jasmineBrowser.server({ port: 3001 }));
+});
+
+gulp.task("serve", function() {
+	browserSync.init({
+		server: {
+			baseDir: "./"
+		}
+	});
 })
 
 //prepare for distribution
@@ -74,7 +83,7 @@ gulp.task("dist", gulp.parallel(
 ));
 
 //default task
-gulp.task("default", gulp.parallel("dist", "copy-html", "copy-imgs", "styles", "scripts", "scripts-dist", "tests", "browser-tests"), function() {
+gulp.task("default", gulp.parallel("dist", "copy-html", "copy-imgs", "styles", "scripts", "scripts-dist", "tests", "browser-tests", "serve"), function() {
 	gulp.watch('css/*.css', ['styles']);
 	gulp.watch('/index.html', ['copy-html']);
 });
