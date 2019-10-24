@@ -11,9 +11,12 @@
 <body ng-app="StoryManager">
 	<h1 id="mainTitle">Your Stories</h1>
 	<div id="storiesContainer">
-		<div ng-include="views/libraryMgr.html" ng-controller="libraryMgr as libraryMgr">
+		<div ng-include="'views/libraryMgr.html'" ng-controller="libraryMgr as libraryMgr">
 		</div>
 	</div>
 	<script src="js/app.js"></script>
+	<script src="js/controllers/libraryMgr.js"></script>
+	<script src="js/controllers/storyMgr.js"></script>
+	<script src="js/services/librarian.js"></script>
 </body>
 </html>
