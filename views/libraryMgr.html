@@ -1,11 +1,12 @@
 <!-- libraryMgr Template 
 	Story Manager Template 
 	Written by Shir Bar Lev  -->
-
-<ul id="storiesContainer" ng-repeat="story in libraryMgr.storiesDetails">
-	<li id="storyContainer">
-		<h3 class="storyTitle"> {{ story.title }} </h3>
-		<p class="storySynopsis"> {{ story.synopsis }} </p>
-		<a ng-href=""> View Story </a>
-	</li>
-</ul>
+<div ng-controller="libraryMgr">
+	<ul id="storiesContainer" ng-repeat="story in libraryMgr.storiesDetails">
+		<li id="storyContainer">
+			<h3 class="storyTitle"> {{ story.title }} </h3>
+			<p class="storySynopsis"> {{ story.synopsis }} </p>
+			<a ng-href=""> View Story </a>
+		</li>
+	</ul>
+</div>
