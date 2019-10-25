@@ -1,2 +1,2 @@
-@font-face{font-family:"noteworthy";src:url("Noteworthy-Lt.ttf")}
+@font-face{font-family:"noteworthy";src:url("Noteworthy-Lt.ttf")}#mainTitle{text-align:center;font-family:noteworthy;font-size:24px;background-color:#031863;color:#FFFEF2;padding:10px;top:0;position:static}#storiesContainer{list-style-type:none;display:flex;flex-wrap:wrap}.storyContainer{border:thin solid #000;padding:10px;border-radius:4px}.storyTitle{font-family:noteworthy;text-align:center}.storySynopsis{font-family:noteworthy;text-align:center}
 /*# sourceMappingURL=styles.css.map */
