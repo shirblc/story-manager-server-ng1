@@ -10,10 +10,10 @@
 angular.module('StoryManager')
 	.controller('storyCtrl', ['librarian', function(librarian) {
 		//variable declaration
-		var storyDetails = librarian.getCurrentStory();
-		var storyName = storyDetails.name;
-		var storySynopsis = storyDetails.synopsis;
-		var chapters = storyDetails.chapters;
+		this.storyDetails = librarian.getCurrentStory();
+		this.storyName = storyDetails.name;
+		this.storySynopsis = storyDetails.synopsis;
+		this.chapters = storyDetails.chapters;
 		
 		/*
 		Function Name: changeStoryName()
