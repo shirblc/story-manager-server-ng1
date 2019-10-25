@@ -9,26 +9,9 @@
 angular.module('StoryManager')
 	.service('librarian', ['$http', function($http) {
 		//variable declaration
-		var myStories = getStories();
+		var myStories;
 		var currentStoryNum = 0;
-		var currentStory = myStories[currentStoryNum];
-		
-		/*
-		Function Name: getStories()
-		Function Description: Gets the details of the stories from the JSON data file.
-		Parameters: None.
-		----------------
-		Programmer: Shir Bar Lev.
-		*/
-		function getStories()
-		{
-			return $http({
-				method: 'GET',
-				url: '/data/stories.json'
-			}).then(function(response) {
-				return response.data.stories;
-			});
-		}
+		var currentStory;
 		
 		/*
 		Function Name: getStory()
