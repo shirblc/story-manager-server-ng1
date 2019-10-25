@@ -7,11 +7,11 @@
 
 //librarian service to deal with getting and setting the stories list
 angular.module('StoryManager')
-	.service('librarian', function() {
+	.service('librarian', ['$http', function($http) {
 		//variable declaration
 		var myStories = getStories();
 		var currentStoryNum = 0;
-		var currentStory = myStories.stories[currentStoryNum];
+		var currentStory = myStories[currentStoryNum];
 		
 		/*
 		Function Name: getStories()
@@ -22,7 +22,12 @@ angular.module('StoryManager')
 		*/
 		function getStories()
 		{
-			return $.getJSON('data/stories.json');
+			return $http({
+				method: 'GET',
+				url: '/data/stories.json'
+			}).then(function(response) {
+				return response.data.stories;
+			});
 		}
 		
 		/*
@@ -103,4 +108,4 @@ angular.module('StoryManager')
 			myStories.stories[currentStoryNum].name = storyName;
 		 	myStories.stories[currentStoryNum].synopsis = storySynopsis;
 		}
-});
+}]);
