@@ -1,5 +1,5 @@
 /*
-	storyMgr.js
+	storyCtrl.js
 	Story Manager Controller
 	
 	Written by Shir Bar Lev
@@ -8,7 +8,7 @@
 //story manager controller
 //contains the currently viewed story
 angular.module('StoryManager')
-	.controller('storyMgr', ['librarian', function(librarian) {
+	.controller('storyCtrl', ['librarian', function(librarian) {
 		//variable declaration
 		var storyDetails = librarian.getCurrentStory();
 		var storyName = storyDetails.name;

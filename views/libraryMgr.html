@@ -1,8 +1,8 @@
 <!-- libraryMgr Template 
 	Story Manager Template 
 	Written by Shir Bar Lev  -->
-<div ng-controller="libraryMgr">
-	<ul id="storiesContainer" ng-repeat="story in libraryMgr.storiesDetails">
+<div ng-controller="libraryCtrl">
+	<ul id="storiesContainer" ng-repeat="story in libraryCtrl.storiesDetails">
 		<li id="storyContainer">
 			<h3 class="storyTitle"> {{ story.title }} </h3>
 			<p class="storySynopsis"> {{ story.synopsis }} </p>

@@ -1,5 +1,5 @@
 /*
-	libraryMgr.js
+	libraryCtrl.js
 	Story Manager Controller
 	
 	Written by Shir Bar Lev
@@ -8,7 +8,7 @@
 //library controller
 //contains all the stotries' basic data
 angular.module("StoryManager")
-	.controller("libraryMgr", ['librarian', function(librarian) {
+	.controller("libraryCtrl", ['librarian', function(librarian) {
 		//variable declaration
 		var numStories = librarian.getNumStories();
 		var storiesDetails = [];

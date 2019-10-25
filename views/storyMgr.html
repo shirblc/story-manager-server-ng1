@@ -2,12 +2,12 @@
 	Story Manager Template 
 	Written by Shir Bar Lev  -->
 
-<div class="storyDetails">
+<div class="storyDetails" ng-controller="storyCtrl">
 	<button class="editButton">Edit</button>
 	<h2> {{ storyMgr.storyName }} </h2>
 	<div> {{ storyMgr.storySynopsis }} </div>
 	<h3> The story so far... </h3>
-		<div ng-repeat="chapter in storyMgr.chapters">
+		<div ng-repeat="chapter in storyCtrl.chapters">
 			<h4> Chapter {{ chapter.number }}: {{ chapter.title }} </h4>
 			<p> {{ chapter.synopsis }} </p>
 			<button class="editButton">Edit</button>
