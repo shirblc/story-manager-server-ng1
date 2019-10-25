@@ -10,11 +10,10 @@
 angular.module("StoryManager")
 	.controller("libraryCtrl", ['librarian', 'loadData', function(librarian, loadData) {
 		//variable declaration
-		var numStories = librarian.getNumStories();
-		var storiesDetails = [];
-		var selectedStory = 0;
+		this.numStories = loadData.length;
+		this.storiesDetails = getStoryDetails();
+		this.selectedStory = 0;
 		
-		getStoryDetails();
 		/*
 		Function Name: getStoryDetails()
 		Function Description: Gets the details of each story from the librarian service and adds their
@@ -23,17 +22,21 @@ angular.module("StoryManager")
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		this.getStoryDetails = function()
+		function getStoryDetails()
 		{
+			var storyArray = []; 
+			
 			for(var i = 0; i < numStories; i++)
 			{
-				var storyDetails = librarian.getStory(i+1);
-				var story = { 
-					title: storyDetails.title, 
+				var storyDetails = loadData[i];
+				var story = {
+					title: storyDetails.name, 
 					synopsis: storyDetails.synopsis
 				};
-				storiesDetails.push(story);
+				storyArray.push(story);
 			}
+			
+			return storyArray;
 		}
 
 		/*
