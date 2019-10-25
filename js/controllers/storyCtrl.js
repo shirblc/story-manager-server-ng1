@@ -22,7 +22,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function changeStoryName(newName)
+		this.changeStoryName = function(newName)
 		{
 			storyName = newName;
 		}
@@ -35,7 +35,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function changeChapterName(chapterNum, chapterName)
+		this.changeChapterName = function(chapterNum, chapterName)
 		{
 			chapters[chapterNum-1].name = chapterName;
 			librarian.updateStory(chapters);
@@ -49,7 +49,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function changeChapterSynopsis(chapterNum, chapterSynopsis)
+		this.changeChapterSynopsis = function(chapterNum, chapterSynopsis)
 		{
 			chapters[chapterNum-1].name = chapterSynopsis;
 			librarian.updateStory(chapters);
@@ -63,7 +63,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function addChapter(chapterName, chapterSynopsis)
+		this.addChapter = function(chapterName, chapterSynopsis)
 		{
 			chapters.push({number: chapters.length, title: chapterName, synopsis: chapterSynopsis});
 			librarian.updateStory(chapters);
@@ -76,7 +76,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function removeChapter(chapterID)
+		this.removeChapter = function(chapterID)
 		{
 			chapters.splice(chapterID, 1);
 			librarian.updateStory(chapters);

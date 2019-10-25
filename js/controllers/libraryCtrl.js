@@ -23,7 +23,7 @@ angular.module("StoryManager")
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function getStoryDetails()
+		this.getStoryDetails = function()
 		{
 			for(var i = 0; i < numStories; i++)
 			{
@@ -43,7 +43,7 @@ angular.module("StoryManager")
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function getSelectedStory()
+		this.getSelectedStory = function()
 		{
 			return selectedStory;
 		}
@@ -56,7 +56,7 @@ angular.module("StoryManager")
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function setSelectedStory(numSelected)
+		this.setSelectedStory = function(numSelected)
 		{
 			selectedStory = numSelected;
 			librarian.setCurrentStoryNum(numSelected);

@@ -20,7 +20,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function getStory(storyID)
+		this.getStory = function(storyID)
 		{
 			return myStories.stories[storyID];
 		}
@@ -32,7 +32,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function getNumStories()
+		this.getNumStories = function()
 		{
 			return myStories.stories.length;
 		}
@@ -44,7 +44,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function getCurrentStory()
+		this.getCurrentStory = function()
 		{
 			return currentStory;
 		}
@@ -56,7 +56,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function setCurrentStoryNum(selectedStory)
+		this.setCurrentStoryNum = function(selectedStory)
 		{
 			currentStoryNum = selectedStory;
 			currentStory = myStories.stories[selectedStory];
@@ -69,7 +69,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function updateStory(chapters)
+		this.updateStory = function(chapters)
 		{	myStories.stories[currentStoryNum].chapters = chapters;
 			$.ajax({
 				url: "data/stories.json",
@@ -86,7 +86,7 @@ angular.module('StoryManager')
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		function updateStoryDetails(storyName, storySynopsis)
+		this.updateStoryDetails = function(storyName, storySynopsis)
 		{
 			myStories.stories[currentStoryNum].name = storyName;
 		 	myStories.stories[currentStoryNum].synopsis = storySynopsis;
