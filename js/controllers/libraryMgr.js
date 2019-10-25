@@ -8,12 +8,13 @@
 //library controller
 //contains all the stotries' basic data
 angular.module("StoryManager")
-	.controller('libraryMgr', ['librarian', function(librarian) {
+	.controller("libraryMgr", ['librarian', function(librarian) {
 		//variable declaration
 		var numStories = librarian.getNumStories();
 		var storiesDetails = [];
 		var selectedStory = 0;
-
+		
+		getStoryDetails();
 		/*
 		Function Name: getStoryDetails()
 		Function Description: Gets the details of each story from the librarian service and adds their
@@ -27,7 +28,10 @@ angular.module("StoryManager")
 			for(var i = 0; i < numStories; i++)
 			{
 				var storyDetails = librarian.getStory(i+1);
-				var story = { title: storyDetails.title, synopsis: storyDetails.synopsis };
+				var story = { 
+					title: storyDetails.title, 
+					synopsis: storyDetails.synopsis
+				};
 				storiesDetails.push(story);
 			}
 		}
