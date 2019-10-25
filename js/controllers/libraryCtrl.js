@@ -10,6 +10,7 @@
 angular.module("StoryManager")
 	.controller("libraryCtrl", ['librarian', 'loadData', function(librarian, loadData) {
 		//variable declaration
+		var vm = this;
 		this.numStories = loadData.length;
 		this.storiesDetails = getStoryDetails();
 		this.selectedStory = 0;
@@ -26,7 +27,7 @@ angular.module("StoryManager")
 		{
 			var storyArray = []; 
 			
-			for(var i = 0; i < numStories; i++)
+			for(var i = 0; i < vm.numStories; i++)
 			{
 				var storyDetails = loadData[i];
 				var story = {
