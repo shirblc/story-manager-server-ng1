@@ -1,18 +1,16 @@
-# Empty Site
+# Story Manager
 
 ## Version
 
-Version 1.
+Version 1 (currently in development).
+
+Built using the [gulp-site-template](https://github.com/shirblc/gulp-site-template) repo.
 
 ## Desciption
 
-An empty site template for any use. Comes fully equipped with Gulp and several of its plugins (see Dependencies) to make your workflow quicker. Largely based on Udacity's [Web Tooling and Automation](https://www.udacity.com/course/web-tooling-automation--ud892) course.
+A story manager app for writers to keep track of their current stories and plotlines. It's currently possible to set a story's basic details and the basic details for each chapter within it. You can create as many stories as you like.
 
-**Important!** This version was built for Adobe Dreamweaver or Adobe Brackets users. Therefore it doesn't include several important tools:
-
-1. Linting - Both Dreamweaver and Brackets have linting built into their interface, using the popular ESLint. As such, there was no need to install the Gulp-ESLint extension.
-2. Live Editing - Both Dreamweaver and Brackets have Live Editing built into their interface (as "Real-time Preview". As such, there was no need to install the BrowserSync extension.
-3. Sass - Both Dreamweaver and Brackets come with a build-in Sass/SCSS/Less conversion tool. As such, there was no need to install the Gulp-Sass extension.
+The app utilises AngularJS for its build and the build tool Gulp for automated tasks.
 
 ## Requirements
 
@@ -20,55 +18,28 @@ An empty site template for any use. Comes fully equipped with Gulp and several o
 
 ## Installation and Usage
 
-### Master Branch
+### Developers
 
 1. Download or clone the repo.
 2. cd into the project directory.
-3. Run ```npm install```.
-4. Start building. Don't forget to add each JavaScript file you create to the concatenation order in the Gulp tasks 'scripts' and 'scripts-dist'.
+3. Run ```npm install``` to install dependencies.
+4. Open index.html.
 
-### Unit-Testing-Gulp Branch
-
-1. Download or clone the repo.
-2. cd into the project directory.
-3. Run ```npm install```.
-4. Set up your tests in the Jasmine specs folder.
-5. Start building. Don't forget to add each JavaScript file you create to the concatenation order in the Gulp tasks 'scripts' and 'scripts-dist'.
-
-### Unit-Testing-Manual Branch
+### Users
 
 1. Download or clone the repo.
 2. cd into the project directory.
-3. Run ```npm install```.
-4. Set up your tests in the Jasmine tests folder and get specRunner.html running.
-5. Start building. Don't forget to add each JavaScript file you create to the concatenation order in the Gulp tasks 'scripts' and 'scripts-dist'.
+3. cd into 'dist' directory.
+4. Open index.html.
 
 ## Contents
 
-### Development Mode
+The app contains a Story Manager module (in app.js), which contains two controllers for two templates:
 
-The Developmnt Mode folder (parent folder) includes:
+1. **libraryMgr** + **libraryCtrl** - Displays the name and synopsis of each added story. Allows users to add and deletec stories.
+2. **storyMgr** + **storyCtrl** - Displays the name and synopsis of each chapter within the currently open story. Allows users to edit a story's details, as well sa adding, deleting and editing chapters' details.
 
-1. **CSS Folder** - For Sass files output.
-2. **Sass Folder** - For the project's Sass files.
-3. **JS Folder** - For all scripts.
-4. **IMG Folder** - For all images.
-5. **Tests Folder** (unit testing branches only) - For Jasmine spec files.
-	- unit-testing-gulp - Contains only the JavaScript specs file. The specRunner will open once you run the gulp testing task.
-	- unit-testing-manual - Contains the Jasmine library, the specRunner and whatever specs files you add.
-6. **Dist Folder** - See "Production Mode"
-
-As well as the files:
-
-1. **gulpfile.js** - JavaScript file containing the tasks for gulp to perform. 
-2. **index.html** - The base HTML file.
-3. **package.json** and **package-lock.json** - NPM files including all the required dependencies. To install, run ```npm install```.
-4. **README.md** - This file.
-
-### Production Mode
-
-To make it easier to prerpare for distribution, the site includes a seperate distribution folder, to the files are exported once they're run through Gulp. This is the "dist" folder.
-The distribution folder already includes a CSS folder and a JS folder, for the site's CSS and JavaScript (respectively). A Gulp task deals particulalry with adding the photos folder and the index HTML file to the distribution folder every time they're changed.
+The app also contains a service, librarian, which is responsible for getting a story's or a library's data and posting changes to the JSON file containing the library information (data/stories.JSON).
 
 ## Dependencies
 
