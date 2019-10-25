@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "WACC,WAAW,CAAE,YAAY,CACzB,GAAG,CAAE,wBAAwB",
+"mappings": "WAEC,WAAW,CAAE,YAAY,CACzB,GAAG,CAAE,wBAAwB",
 "sources": ["../sass/styles.sass"],
 "names": [],
 "file": "styles.css"
