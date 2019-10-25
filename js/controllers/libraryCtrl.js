@@ -8,7 +8,7 @@
 //library controller
 //contains all the stotries' basic data
 angular.module("StoryManager")
-	.controller("libraryCtrl", ['librarian', function(librarian) {
+	.controller("libraryCtrl", ['librarian', 'loadData', function(librarian, loadData) {
 		//variable declaration
 		var numStories = librarian.getNumStories();
 		var storiesDetails = [];
