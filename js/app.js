@@ -23,7 +23,7 @@ angular
 				});
 			}
 		},
-		controller: 'libraryCtrl'
+		controller: 'libraryCtrl as library'
 	});
 }]);
 
