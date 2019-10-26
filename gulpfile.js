@@ -45,7 +45,13 @@ gulp.task("scripts", function() {
 	return gulp.src("js/*.js")
 	.pipe(sourcemaps.init())
 	.pipe(babel({presets: ['@babel/preset-env']}))
-	.pipe(order([]))
+	.pipe(order([
+		"/js/app.js",
+		"/js/services/librarian.js",
+		"/js/libraryCtrl.js",
+		"/js/storyCtrl.js",
+		"/js/settingsCtrl.js"
+	]))
 	.pipe(concat('all.js'))
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest("dist/js"))
@@ -56,7 +62,13 @@ gulp.task("scripts-dist", function() {
 	return gulp.src("js/*.js")
 	.pipe(sourcemaps.init())
 	.pipe(babel({presets: ['@babel/preset-env']}))
-	.pipe(order([]))
+	.pipe(order([
+		"/js/app.js",
+		"/js/services/librarian.js",
+		"/js/libraryCtrl.js",
+		"/js/storyCtrl.js",
+		"/js/settingsCtrl.js"
+	]))
 	.pipe(concat('all.js'))
 	.pipe(uglify())
 	.pipe(sourcemaps.write())
