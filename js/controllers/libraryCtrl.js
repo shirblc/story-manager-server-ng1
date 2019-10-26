@@ -32,7 +32,8 @@ angular.module("StoryManager")
 				var storyDetails = loadData[i];
 				var story = {
 					title: storyDetails.name, 
-					synopsis: storyDetails.synopsis
+					synopsis: storyDetails.synopsis,
+					id: storyDetails.id
 				};
 				storyArray.push(story);
 			}

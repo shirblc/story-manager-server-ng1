@@ -8,7 +8,7 @@
 //story manager controller
 //contains the currently viewed story
 angular.module('StoryManager')
-	.controller('storyCtrl', ['librarian', function(librarian) {
+	.controller('storyCtrl', ['$stateParam', 'librarian', function($stateParam, librarian) {
 		//variable declaration
 		this.storyDetails = librarian.getCurrentStory();
 		this.storyName = storyDetails.name;

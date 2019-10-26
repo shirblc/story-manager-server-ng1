@@ -6,7 +6,7 @@
 		<li class="storyContainer">
 			<h3 class="storyTitle"> {{ story.title }} </h3>
 			<p class="storySynopsis"> {{ story.synopsis }} </p>
-			<a ng-href=""> View Story </a>
+			<a ui-sref="story({ id: story.id })"> View Story </a>
 		</li>
 	</ul>
 </div>

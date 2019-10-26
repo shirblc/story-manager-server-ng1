@@ -25,6 +25,22 @@ angular
 		},
 		controller: 'libraryCtrl as library'
 	});
+	
+	$stateProvider.state('story', {
+		templateUrl: '/views/storyMgr.html',
+		url: '/story/{id}',
+		resolve: {
+			loadData: function($http) {
+				return $http({
+					method: 'GET',
+					url: '/data/stories.json'
+				}).then(function(response) {
+					return response.data.stories;
+				});
+			}
+		},
+		controller: 'storyCtrl as story'
+	});
 }]);
 
 angular
