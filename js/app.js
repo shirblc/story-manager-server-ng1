@@ -45,9 +45,18 @@ angular
 	});
 	
 	//a story edit page
+	//child of the story page
 	$stateProvider.state('story.edit', {
 		templateUrl: '/views/storyEdit.html',
 		url: '/story/{id}/edit-story',
+		controller: 'editCtrl as edit'
+	});
+	
+	//a chapter edit page
+	//child of the story edit page
+	$stateProvider.state('story.edit.chapter', {
+		templateUrl: '/views/chapterEdit.html',
+		url: '/story/{id}/edit-story/edit-chapter/{chapterNum}',
 		controller: 'editCtrl as edit'
 	});
 }]);
