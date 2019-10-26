@@ -10,6 +10,7 @@
 angular.module('StoryManager')
 	.controller('storyCtrl', ['$stateParams', 'librarian', 'loadData', function($stateParams, librarian, loadData) {
 		//variable declaration
+		var vm = this;
 		var storyDetails = loadData[$stateParams.id-1];
 		this.storyName = storyDetails.name;
 		this.storySynopsis = storyDetails.synopsis;
@@ -24,7 +25,7 @@ angular.module('StoryManager')
 		*/
 		this.changeStoryName = function(newName)
 		{
-			storyName = newName;
+			vm.storyName = newName;
 		}
 		
 		/*
@@ -37,7 +38,7 @@ angular.module('StoryManager')
 		*/
 		this.changeChapterName = function(chapterNum, chapterName)
 		{
-			chapters[chapterNum-1].name = chapterName;
+			vm.chapters[chapterNum-1].name = chapterName;
 			librarian.updateStory(chapters);
 		}
 		
@@ -51,7 +52,7 @@ angular.module('StoryManager')
 		*/
 		this.changeChapterSynopsis = function(chapterNum, chapterSynopsis)
 		{
-			chapters[chapterNum-1].name = chapterSynopsis;
+			vm.chapters[chapterNum-1].name = chapterSynopsis;
 			librarian.updateStory(chapters);
 		}
 		
@@ -65,7 +66,7 @@ angular.module('StoryManager')
 		*/
 		this.addChapter = function(chapterName, chapterSynopsis)
 		{
-			chapters.push({number: chapters.length, title: chapterName, synopsis: chapterSynopsis});
+			vm.chapters.push({number: chapters.length, title: chapterName, synopsis: chapterSynopsis});
 			librarian.updateStory(chapters);
 		}
 		
@@ -78,7 +79,7 @@ angular.module('StoryManager')
 		*/
 		this.removeChapter = function(chapterID)
 		{
-			chapters.splice(chapterID, 1);
+			vm.chapters.splice(chapterID, 1);
 			librarian.updateStory(chapters);
 		}
 }]);
