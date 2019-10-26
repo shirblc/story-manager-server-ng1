@@ -38,8 +38,9 @@ The app contains a Story Manager module (in app.js), which contains two controll
 
 1. **libraryMgr** + **libraryCtrl** - Displays the name and synopsis of each added story. Allows users to add and deletec stories.
 2. **storyMgr** + **storyCtrl** - Displays the name and synopsis of each chapter within the currently open story. Allows users to edit a story's details, as well sa adding, deleting and editing chapters' details.
+3. **settings** + **settingsCtrl** - Allows the users to change several of the app's settings. Still in development.
 
-The app also contains a service, librarian, which is responsible for getting a story's or a library's data and posting changes to the JSON file containing the library information (data/stories.JSON).
+The app also contains a service, **librarian**, which is responsible for getting a story's or a library's data and posting changes to the JSON file containing the library information (data/stories.JSON).
 
 ## Dependencies
 
