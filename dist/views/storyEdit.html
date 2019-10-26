@@ -1,0 +1,25 @@
+<nav>
+	<div id="breadcrumb">
+		<a ui-sref="home">Home</a> / <a ui-sref="/story/{id}">Story {{ edit.story.storyID }}</a> / Edit Story
+	</div>
+</nav>
+
+<div id="editStory">
+	<h2>Edit Story Details</h2>
+	<div>Story Title:</div> <input type="text" value="{{ edit.story.title }}" id="storyTitle">
+	<div>Story Synopsis:</div>
+	<textarea id="storySynopsis">{{ edit.story.synopsis }}</textarea>
+
+	<button>Save</button>
+</div>
+
+<div id="chapters">
+	<div class="chapters" ng-repeat="chapter in story.chapters">
+		<div class="chapterDetails">
+			<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
+			<h4 class="chapterTitle"> {{ chapter.title }} </h4>
+			<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
+			<button class="editButton">Edit</button>
+		</div>
+	</div>
+</div>
