@@ -10,7 +10,7 @@
 angular.module('StoryManager')
 	.controller('storyCtrl', ['$stateParams', 'librarian', 'loadData', function($stateParams, librarian, loadData) {
 		//variable declaration
-		this.storyDetails = loadData[$stateParams.id];
+		var storyDetails = loadData[$stateParams.id-1];
 		this.storyName = storyDetails.name;
 		this.storySynopsis = storyDetails.synopsis;
 		this.chapters = storyDetails.chapters;
