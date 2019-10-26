@@ -4,12 +4,12 @@
 
 <div class="storyDetails">
 	<button class="editButton">Edit</button>
-	<h2> {{ story.storyName }} </h2>
-	<div> {{ story.storySynopsis }} </div>
+	<h2 class="storyTitle"> {{ story.storyName }} </h2>
+	<div class="storySynopsis"> {{ story.storySynopsis }} </div>
 	<h3> The story so far... </h3>
-		<div ng-repeat="chapter in story.chapters">
-			<h4> Chapter {{ chapter.number }}: {{ chapter.title }} </h4>
-			<p> {{ chapter.synopsis }} </p>
+		<div class="chapterDetails" ng-repeat="chapter in story.chapters">
+			<h4 class="chapterTitle"> Chapter {{ chapter.number }}: {{ chapter.title }} </h4>
+			<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
 			<button class="editButton">Edit</button>
 		</div>
 </div>
