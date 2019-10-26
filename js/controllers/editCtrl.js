@@ -7,10 +7,10 @@
 
 //edit controller, responsible for any editing act (on both storyEdit and chapterEdit)
 angular.module("StoryManager")
-	.controller("editCtrl", ['librarian', function(librarian) {
+	.controller("editCtrl", ['$stateParams', 'librarian', 'loadData', function($stateParams, librarian, loadData) {
 		//variable declaration
 		var vm = this;
-		this.story;
+		this.story = loadData[$stateParams.id-1];
 		
 		/*
 		Function Name: changeDetails()
