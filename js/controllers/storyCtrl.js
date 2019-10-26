@@ -15,6 +15,7 @@ angular.module('StoryManager')
 		this.storyName = storyDetails.name;
 		this.storySynopsis = storyDetails.synopsis;
 		this.chapters = storyDetails.chapters;
+		this.storyID = storyDetails.id;
 		
 		/*
 		Function Name: changeStoryName()
