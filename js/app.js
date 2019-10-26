@@ -10,6 +10,7 @@ angular
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider, $http) {
 	$urlRouterProvider.otherwise('/');
 	
+	//home state (main/library page)
 	$stateProvider.state('home', {
 		templateUrl: '/views/libraryMgr.html',
 		url: '/',
@@ -26,6 +27,7 @@ angular
 		controller: 'libraryCtrl as library'
 	});
 	
+	//a story's page
 	$stateProvider.state('story', {
 		templateUrl: '/views/storyMgr.html',
 		url: '/story/{id}',
@@ -40,6 +42,13 @@ angular
 			}
 		},
 		controller: 'storyCtrl as story'
+	});
+	
+	//a story edit page
+	$stateProvider.state('story.edit', {
+		templateUrl: '/views/storyEdit.html',
+		url: '/story/{id}/edit-story',
+		controller: 'editCtrl as edit'
 	});
 }]);
 
