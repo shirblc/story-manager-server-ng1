@@ -18,46 +18,6 @@ angular.module('StoryManager')
 		this.storyID = storyDetails.id;
 		
 		/*
-		Function Name: changeStoryName()
-		Function Description: Changes the name of the story.
-		Parameters: newName - the new name for the story.
-		----------------
-		Programmer: Shir Bar Lev.
-		*/
-		this.changeStoryName = function(newName)
-		{
-			vm.storyName = newName;
-		}
-		
-		/*
-		Function Name: changeChapterName()
-		Function Description: Changes the name of the selected chapter.
-		Parameters: chapterNum - the number of chapter to change
-					chapterName - the new name for the chapter
-		----------------
-		Programmer: Shir Bar Lev.
-		*/
-		this.changeChapterName = function(chapterNum, chapterName)
-		{
-			vm.chapters[chapterNum-1].name = chapterName;
-			librarian.updateStory(chapters);
-		}
-		
-		/*
-		Function Name: changeChapterSynopsis()
-		Function Description: Changes the synopsis of the selected chapter.
-		Parameters: chapterNum - the number of chapter to change
-					chapterSynopsis - the new synopsis for the chapter
-		----------------
-		Programmer: Shir Bar Lev.
-		*/
-		this.changeChapterSynopsis = function(chapterNum, chapterSynopsis)
-		{
-			vm.chapters[chapterNum-1].name = chapterSynopsis;
-			librarian.updateStory(chapters);
-		}
-		
-		/*
 		Function Name: addChapter()
 		Function Description: Adds a new chapter.
 		Parameters: chapterName - the name of the new chapter
