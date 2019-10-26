@@ -5,7 +5,20 @@
 
 // Variables
 $mainFont: noteworthy
+$border: thin solid #000000
 
+/* =================== General Styling =================== */
+img, picture, video, embed
+	max-width: 100%
+
+body
+	top: 0
+	right: 0
+	left: 0
+	padding: 0
+	margin: 0
+
+//site header
 #mainTitle
 	text-align: center
 	font-family: $mainFont
@@ -13,23 +26,47 @@ $mainFont: noteworthy
 	background-color: #031863
 	color: #FFFEF2
 	padding: 10px
+	margin: 0 0 10px
 	top: 0
-	position: static
+	right: 0
+	left: 0
+	position: sticky
+	display: block
 
+/* =================== Library View =================== */
+//the stories container
 #storiesContainer
 	list-style-type: none
 	display: flex
 	flex-wrap: wrap
+	padding: 0 15px
 
+//a single story container
 .storyContainer
-	border: thin solid #000000
-	padding: 10px
+	border: $border
+	padding: 10px 20px
 	border-radius: 4px
+	background-color: #FFFEF2
 
+//story title
 .storyTitle
 	font-family: $mainFont
 	text-align: center
+	padding-top: 0
+	margin-top: 0
 
+//story synopsis
 .storySynopsis
 	font-family: $mainFont
 	text-align: center
+	padding-bottom: 10px
+
+//view story link
+.storyContainer a
+		font-family: $mainFont
+		text-align: center
+		background-color: #D7DAFF
+		padding: 3px 10px
+		margin: 2px 0
+		display: block
+		border: $border
