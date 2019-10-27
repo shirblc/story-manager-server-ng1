@@ -48,16 +48,14 @@ angular
 	//child of the story page
 	$stateProvider.state('story.edit', {
 		templateUrl: '/views/storyEdit.html',
-		url: '/story/{id}/edit-story',
-		controller: 'editCtrl as edit'
+		controller: 'storyCtrl as story'
 	});
 	
 	//a chapter edit page
 	//child of the story edit page
-	$stateProvider.state('story.edit.chapter', {
+	$stateProvider.state('story.editChapter', {
 		templateUrl: '/views/chapterEdit.html',
-		url: '/story/{id}/edit-story/edit-chapter/{chapterNum}',
-		controller: 'editCtrl as edit'
+		controller: 'storyCtrl as story'
 	});
 }]);
 
