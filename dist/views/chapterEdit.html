@@ -1,10 +1,12 @@
 <div id="editChapter">
-	<h2>Edit Chapter Details</h2>
-	<div>Chapter Number:</div> <input type="text" value="{{ chapter.number }}" id="chapterID">
-	<div>Chapter Title:</div> <input type="text" value="{{ chapter.title }}" id="chapterTitle">
-	<div>Chapter Synopsis:</div>
-	<textarea id="chapterSynopsis">{{ chapter.synopsis }}</textarea>
-
+	<h3>Edit Chapter Details</h3>
+	<span class="formTitle">Chapter Number:</span> <input type="text" value="{{ chapter.number }}" id="chapterID">
+	<br>
+	<span class="formTitle">Chapter Title:</span> <input type="text" value="{{ chapter.title }}" id="chapterTitle">
+	<br>
+	<div class="formTitle">Chapter Synopsis:</div>
+	<textarea id="chapterSynopsis" rows="7" cols="40">{{ chapter.synopsis }}</textarea>
+	<br>
 	<button>Save</button>
 	<button>Delete</button>
 </div>
