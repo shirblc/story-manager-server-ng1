@@ -7,7 +7,7 @@
 </nav>
 
 <div class="storyDetails">
-	<a ui-sref="story.edit{{ id: story.storyID }}" class="editLink">Edit</a>
+	<a ui-sref="story.edit" class="editLink">Edit</a>
 	<h2 class="storyTitle"> {{ story.storyName }} </h2>
 	<p class="storySynopsis"> {{ story.storySynopsis }} </p>
 	<h3> The story so far... </h3>
@@ -16,7 +16,8 @@
 				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
 				<h4 class="chapterTitle"> {{ chapter.title }} </h4>
 				<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
-				<a ui-sref="story.edit.chapter{{ id: story.storyID, chapterNum: chapter.number }}" class="editLink">Edit</a>
+				<a ui-sref="story.editChapter" class="editLink">Edit</a>
 			</div>
 		</div>
+	<div id="editContainer" ui-view></div>
 </div>
