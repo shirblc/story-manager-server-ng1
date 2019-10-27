@@ -1,9 +1,9 @@
 <div id="editStory">
-	<h2>Edit Story Details</h2>
-	<div>Story Title:</div> <input type="text" value="{{ story.storyName }}" id="storyTitle">
-	<div>Story Synopsis:</div>
-	<textarea id="storySynopsis">{{ story.storySynopsis }}</textarea>
-
+	<h3>Edit Story Details</h3>
+	<span class="formTitle">Story Title:</span> <input type="text" value="{{ story.storyName }}" id="storyTitle">
+	<div class="formTitle">Story Synopsis:</div>
+	<textarea id="storySynopsis" rows="5" cols="40">{{ story.storySynopsis }}</textarea>
+	<br>
 	<button>Save</button>
 </div>
 

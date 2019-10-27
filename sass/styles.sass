@@ -7,6 +7,18 @@
 $mainFont: noteworthy
 $border: thin solid #000000
 
+//sample title for future extending
+#titleSample
+	font-family: $mainFont
+	width: 100%
+	text-align: center
+
+//sample button for future extending
+#buttonSample
+	text-align: center
+	background-color: #D7DAFF
+	font-family: $mainFont
+
 /* =================== General Styling =================== */
 img, picture, video, embed
 	max-width: 100%
@@ -151,3 +163,41 @@ body
 //the edit link for each chapter
 .chapterDetails .editLink
 	padding: 6px 8px
+
+/* =================== Edit Story Sub-View =================== */
+//edit sub-view container
+#editContainer
+	order: 6	
+
+//the edit story title
+#editStory h3
+	@extend #titleSample
+	padding-bottom: 5px
+
+//a form section name
+#editStory .formTitle
+	font-family: $mainFont
+	padding: 5px
+	font-size: 18px
+
+//the story name text field and the synopsis text field
+input, textarea
+	font-family: $mainFont
+	line-height: 1.2em
+	font-size: 14px
+
+//the story name text field
+input
+	height: 30px
+
+//the save button
+#editStory button
+	@extend #buttonSample
+	font-size: 20px
+	margin: 10px
+
+//the edit button in the chapters view
+.chapters button
+	@extend #buttonSample
+	font-size: 20px
+	margin: 10px
