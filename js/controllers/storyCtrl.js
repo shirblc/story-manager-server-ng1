@@ -33,16 +33,16 @@ angular.module('StoryManager')
 		/*
 		Function Name: changeChapterDetails()
 		Function Description: Changes the name and synopsis of the selected chapter.
-		Parameters: chapterName - the new name for the chapter
-					chapterSynopsis - the new synopsis for the chapter
+		Parameters: None
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		this.changeChapterDetails = function(chapterName, chapterSynopsis)
+		this.changeChapterDetails = function()
 		{
-			vm.story.chapters[$stateParams.chapterNum-1].name = chapterName;
-			vm.story.chapters[$stateParams.chapterNum-1].name = chapterSynopsis;
-			librarian.updateStory(vm.story.chapters);
+			var chapterNumber = document.getElementById("chapterID").value;
+			vm.chapters[chapterNumber-1].name = document.getElementById("chapterTitle").value;
+			vm.chapters[chapterNumber-1].name = document.getElementById("chapterSynopsis").value;
+			librarian.updateStory(vm.chapters);
 		}
 		
 		/*
