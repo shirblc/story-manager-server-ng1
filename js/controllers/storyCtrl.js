@@ -20,15 +20,14 @@ angular.module('StoryManager')
 		/*
 		Function Name: changeDetails()
 		Function Description: Changes the name and synopsis of the story.
-		Parameters: newName - the new name for the story.
-					newSynopsis - the new synopsis
+		Parameters: None.
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		this.changeDetails = function(newName, newSynopsis) {
-			vm.story.name = newName;
-			vm.story.synopsis = newSynopsis;
-			librarian.updateStoryDetails(vm.story.name, vm.story.synopsis);
+		this.changeDetails = function() {
+			vm.storyName = document.getElementById("storyTitle").value;
+			vm.storySynopsis =  document.getElementById("storySynopsis").value;
+			librarian.updateStoryDetails(vm.storyName, vm.storySynopsis);
 		};
 		
 		/*
