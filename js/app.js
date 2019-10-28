@@ -63,8 +63,19 @@ angular
 	
 	//a chapter edit page
 	//child of the story edit page
-	$stateProvider.state('edit.editChapter', {
+	$stateProvider.state('editChapter', {
 		templateUrl: '/views/chapterEdit.html',
+		url:'/story/{id}/edit-story/edit-chapter/{chapterID}',
+		resolve: {
+			loadData: function($http) {
+				return $http({
+					method: 'GET',
+					url: '/data/stories.json'
+				}).then(function(response) {
+					return response.data.stories;
+				});
+			}
+		},
 		controller: 'storyCtrl as story'
 	});
 }]);

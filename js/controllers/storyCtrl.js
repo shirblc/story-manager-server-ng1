@@ -16,6 +16,23 @@ angular.module('StoryManager')
 		this.storySynopsis = storyDetails.synopsis;
 		this.chapters = storyDetails.chapters;
 		this.storyID = storyDetails.id;
+		this.chapter = loadChapterData();
+		
+		/*
+		Function Name: loadChapterData()
+		Function Description: Checks to see whether the current page has a "chapterID" value,
+							which means it's a chapter-edit page. If it is, fetches the data
+							of the chapter being edited for the template to fill in.
+		Parameters: None.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		function loadChapterData() {
+			if($stateParams.chapterID)
+				{
+					return vm.chapters[$stateParams.chapterID - 1];
+				}
+		}
 		
 		/*
 		Function Name: changeDetails()

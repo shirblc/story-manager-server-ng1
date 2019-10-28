@@ -16,7 +16,7 @@
 				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
 				<h4 class="chapterTitle"> {{ chapter.title }} </h4>
 				<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
-				<a ui-sref="story.editChapter" class="editLink">Edit</a>
+				<a ui-sref="editChapter({ id: story.storyID, chapterID: chapter.number })" class="editLink">Edit</a>
 			</div>
 		</div>
 </div>

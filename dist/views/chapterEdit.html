@@ -1,12 +1,20 @@
+<!-- chapterEdit Template 
+	Story Manager Template 
+	Written by Shir Bar Lev  -->
+
+<nav>
+	<div id="breadcrumb"><a ui-sref="home">Home</a> / <a ui-sref="story({ id: story.storyID })">Story {{ story.storyID }}</a> / Edit</div>
+</nav>
+
 <div id="editChapter">
 	<h3>Edit Chapter Details</h3>
-	<span class="formTitle">Chapter Number:</span> <input type="text" value="{{ chapter.number }}" id="chapterID">
+	<span class="formTitle">Chapter Number:</span> <input type="text" value="{{ story.chapter.number }}" id="chapterID">
 	<br>
-	<span class="formTitle">Chapter Title:</span> <input type="text" value="{{ chapter.title }}" id="chapterTitle">
+	<span class="formTitle">Chapter Title:</span> <input type="text" value="{{ story.chapter.title }}" id="chapterTitle">
 	<br>
 	<div class="formTitle">Chapter Synopsis:</div>
-	<textarea id="chapterSynopsis" rows="7" cols="40">{{ chapter.synopsis }}</textarea>
+	<textarea id="chapterSynopsis" rows="7" cols="40">{{ story.chapter.synopsis }}</textarea>
 	<br>
-	<button>Save</button>
-	<button>Delete</button>
+	<button ng-click="story.changeChapterDetails()">Save</button>
+	<button ng-click="story.removeChapter()">Delete Chapter</button>
 </div>
