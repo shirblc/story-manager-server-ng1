@@ -45,15 +45,25 @@ angular
 	});
 	
 	//a story edit page
-	//child of the story page
-	$stateProvider.state('story.edit', {
+	$stateProvider.state('edit', {
 		templateUrl: '/views/storyEdit.html',
+		url: '/story/{id}/edit-story',
+		resolve: {
+			loadData: function($http) {
+				return $http({
+					method: 'GET',
+					url: '/data/stories.json'
+				}).then(function(response) {
+					return response.data.stories;
+				});
+			}
+		},
 		controller: 'storyCtrl as story'
 	});
 	
 	//a chapter edit page
 	//child of the story edit page
-	$stateProvider.state('story.editChapter', {
+	$stateProvider.state('edit.editChapter', {
 		templateUrl: '/views/chapterEdit.html',
 		controller: 'storyCtrl as story'
 	});
