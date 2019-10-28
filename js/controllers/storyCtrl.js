@@ -62,13 +62,14 @@ angular.module('StoryManager')
 		/*
 		Function Name: removeChapter()
 		Function Description: Deletes a chapter.
-		Parameters: chapterID - the number of the chapter to delete
+		Parameters: None.
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		this.removeChapter = function(chapterID)
+		this.removeChapter = function()
 		{
-			vm.chapters.splice(chapterID, 1);
-			librarian.updateStory(chapters);
+			var chapterNumber = Number(document.getElementById("chapterID").value) - 1;
+			vm.chapters.splice(chapterNumber, 1);
+			librarian.updateStory(vm.chapters);
 		}
 }]);
