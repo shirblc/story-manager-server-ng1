@@ -16,7 +16,7 @@
 	<textarea id="chapterSynopsis" rows="7" cols="40">{{ story.chapter.synopsis }}</textarea>
 	<br>
 	<button ng-click="story.changeChapterDetails()">Save</button>
-	<button ng-click="story.removeChapter()">Delete Chapter</button>
+	<button ng-click="story.deleteItem('Chapter ' + story.chapter.number)">Delete Chapter</button>
 </div>
 
 
