@@ -166,9 +166,10 @@ body
 
 /* =================== Edit Story View =================== */
 //the edit story title
-#editStory h3
+#editStory > h3
 	@extend #titleSample
 	padding-bottom: 5px
+	font-size: 24px
 
 //a form section name
 #editStory .formTitle
@@ -192,8 +193,43 @@ input
 	font-size: 20px
 	margin: 10px
 
+//the chapters section (including title and buttons)
+#storyEdit #chapters
+	display: flex
+	flex-wrap: wrap
+	align-content: center
+	justify-content: center
+
+//"edit chapters" title
+#editTitle
+	font-family: $mainFont
+	padding: 5px
+	font-size: 24px
+	text-align: center
+	width: 100%
+	margin-bottom: 0
+
+//the control buttons
+.controlBtn
+	@extend #buttonSample
+	padding: 5px
+	margin: 5px
+
+//the icons within them
+.controlBtn .fas
+	font-size: 18px
+	margin: 5px
+
+//the chapters list
+.chapters
+	display: flex
+	flex-wrap: wrap
+	align-content: center
+	justify-content: center
+	margin-top: 10px
+
 //the edit link in the chapters view
-.chapters a
+#storyEdit .chapters a
 	@extend #buttonSample
 	font-size: 20px
 	margin: 10px
@@ -280,12 +316,12 @@ input
 	font-size: 20px
 
 //add chapter popup text
-#addPopUp span, div
+#addPopUp span, #addPopUp div
 	font-family: $mainFont
 	font-size: 18px
 
 //add chapter popup text fields
-#addPopUp input, textarea
+#addPopUp input, #addPopUp textarea
 	font-family: $mainFont
 	line-height: 1.2em
 	font-size: 14px

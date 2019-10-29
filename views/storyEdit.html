@@ -7,33 +7,35 @@
 	<div id="breadcrumb"><a ui-sref="home">Home</a> / <a ui-sref="story({ id: story.storyID })">Story {{ story.storyID }}</a> / Edit</div>
 </nav>
 
-<!-- Edit Story section -->
-<div id="editStory">
-	<h3>Edit Story Details</h3>
-	<span class="formTitle">Story Title:</span> <input type="text" value="{{ story.storyName }}" id="storyTitle">
-	<div class="formTitle">Story Synopsis:</div>
-	<textarea id="storySynopsis" rows="5" cols="40">{{ story.storySynopsis }}</textarea>
-	<br>
-	<button ng-click="story.changeDetails()">Save</button>
-	<button ng-click="story.deleteItem(story.storyName)">Delete Story</button>
-</div>
+<section id="storyEdit">
+	<!-- Edit Story section -->
+	<div id="editStory">
+		<h3>Edit Story Details</h3>
+		<span class="formTitle">Story Title:</span> <input type="text" value="{{ story.storyName }}" id="storyTitle">
+		<div class="formTitle">Story Synopsis:</div>
+		<textarea id="storySynopsis" rows="5" cols="40">{{ story.storySynopsis }}</textarea>
+		<br>
+		<button ng-click="story.changeDetails()">Save</button>
+		<button ng-click="story.deleteItem(story.storyName)">Delete Story</button>
+	</div>
 
-<!-- Edit chapters section -->
-<div id="chapters">
-	<h3>Edit Chapters</h3>
-	<button id="addChapter" class="controlBtn" ng-click="story.openAddPanel()"><i class="fas fa-plus-circle"></i></button>
-	<button id="removeChapters" class="controlBtn" ng-click="story.openRemovePanel()"><i class="fas fa-minus-circle"></i></button>
-	<button id="deleteAll" class="controlBtn" ng-click="story.deleteItem(story.chapters)"><i class="fas fa-times-circle"></i></button>
-	<!-- Chapters' details -->
-	<div class="chapters" ng-repeat="chapter in story.chapters">
-		<div class="chapterDetails">
-			<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
-			<h4 class="chapterTitle"> {{ chapter.title }} </h4>
-			<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
-			<a ui-sref="editChapter({ id: story.storyID, chapterID: chapter.number })">Edit</a>
+	<!-- Edit chapters section -->
+	<div id="chapters">
+		<h3 id="editTitle">Edit Chapters</h3>
+		<button id="addChapter" class="controlBtn" ng-click="story.openAddPanel()"><i class="fas fa-plus-circle"></i></button>
+		<button id="removeChapters" class="controlBtn" ng-click="story.openRemovePanel()"><i class="fas fa-minus-circle"></i></button>
+		<button id="deleteAll" class="controlBtn" ng-click="story.deleteItem(story.chapters)"><i class="fas fa-times-circle"></i></button>
+		<!-- Chapters' details -->
+		<div class="chapters" ng-repeat="chapter in story.chapters">
+			<div class="chapterDetails">
+				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
+				<h4 class="chapterTitle"> {{ chapter.title }} </h4>
+				<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
+				<a ui-sref="editChapter({ id: story.storyID, chapterID: chapter.number })">Edit</a>
+			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 <!-- Modal box and popups -->
 <div id="modalBox" class="off">
