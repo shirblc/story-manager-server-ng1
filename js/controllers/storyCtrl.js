@@ -163,7 +163,7 @@ angular.module('StoryManager')
 			//checks whether a number was entered for chapter number
 			//if there was, places the chapter in the given place
 			//it there wasn't, simply adds it at the end of the current chapters array
-			var numChapter = (document.getElementById("chapterID").value) ? (document.getElementById("chapterID").value) : (vm.chapters.length);
+			var numChapter = (document.getElementById("chapterID").value) ? (document.getElementById("chapterID").value) : (vm.chapters.length + 1);
 			
 			//adds the chapter to the array in the story controller and sends it to the librarian
 			vm.chapters.push({
