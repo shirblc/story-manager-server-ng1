@@ -64,6 +64,47 @@ angular.module('StoryManager')
 		};
 		
 		/*
+		Function Name: delete()
+		Function Description: Deletes whatever the user asked to delete.
+		Parameters: None.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.delete = function() {
+			//if the user requested to delete the story
+			if(vm.forDeletion == vm.storyName)
+				{
+					loadData.splice(vm.storyID-1, 1);
+					librarian.deleteStory(vm.storyID);
+					$state.go("home");
+				}
+			//if the user requested to delete all the chapters
+			else if(vm.forDeletion == "All chapters")
+				{
+					vm.chapters = [];
+					librarian.updateStory(vm.chapters);
+				}
+			//if it's not either of those, the user requested to delete a chapter
+			else
+				{
+					var chapterNum = vm.forDeletion.substr(8,1);
+					vm.removeChapter(chapterNum);
+				}
+		};
+		
+		
+		/*
+		Function Name: closePopUp()
+		Function Description: Aborts deletion and closes the popup.
+		Parameters: None.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.closePopUp = function() {
+			document.getElementById("modalBox").className = "off";
+		};
+		
+		/*
 		Function Name: changeChapterDetails()
 		Function Description: Changes the name and synopsis of the selected chapter.
 		Parameters: None
@@ -113,13 +154,12 @@ angular.module('StoryManager')
 		/*
 		Function Name: removeChapter()
 		Function Description: Deletes a chapter.
-		Parameters: None.
+		Parameters: chapterNumber - number of the chapter to delete.
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		this.removeChapter = function()
+		this.removeChapter = function(chapterNumber)
 		{
-			var chapterNumber = Number($stateParams.chapterID) - 1;
 			vm.chapters.splice(chapterNumber, 1);
 			librarian.updateStory(vm.chapters);
 		}
