@@ -30,7 +30,7 @@
 			<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
 			<h4 class="chapterTitle"> {{ chapter.title }} </h4>
 			<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
-			<button class="editButton">Edit</button>
+			<a ui-sref="editChapter({ id: story.storyID, chapterID: chapter.number })">Edit</a>
 		</div>
 	</div>
 </div>
