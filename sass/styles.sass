@@ -198,7 +198,7 @@ input
 	font-size: 20px
 	margin: 10px
 
-/* =================== Edit Chapter Sub-View =================== */
+/* =================== Edit Chapter View =================== */
 //a form section name
 #editChapter .formTitle
 	font-family: $mainFont
@@ -221,3 +221,52 @@ input
 	font-size: 18px
 	margin: 10px
 	padding: 5px
+
+/* =================== Popup =================== */
+//general modal box styling
+#modalBox
+	display: block
+	height: 100%
+	width: 100%
+	background-color: rgba(0,0,0,0.60)
+	position: fixed
+	left: 0
+	top: 0
+
+//Modal box when "off"
+.off
+	visibility: hidden
+
+//Modal box when "on"
+.on
+	visibility: visible
+
+//the delete popup
+#deletePopUp
+	background-color: #FFFFFF
+	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5)
+	border-radius: 5px
+	width: 70%
+	text-align: center
+	margin-left: auto
+	margin-right: auto
+	margin-top: 100px
+	padding: 10px
+
+//delete popup text
+#deletePopUp p
+	font-family: $mainFont
+	font-size: 18px
+
+//the item to delete (in the popup)
+#deletePopUp h3
+	font-family: $mainFont
+	font-size: 22px
+	margin-bottom: 0
+
+//the popup buttons
+#deletePopUp button
+	@extend #buttonSample
+	font-size: 18px
+	padding: 7px
+	margin: 7px
