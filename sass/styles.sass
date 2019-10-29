@@ -222,7 +222,7 @@ input
 	margin: 10px
 	padding: 5px
 
-/* =================== Popup =================== */
+/* =================== Popups =================== */
 //general modal box styling
 #modalBox
 	display: block
@@ -252,21 +252,48 @@ input
 	margin-right: auto
 	margin-top: 100px
 	padding: 10px
+	position: fixed
+	top: 100px
+	left: 15%
 
 //delete popup text
 #deletePopUp p
 	font-family: $mainFont
 	font-size: 18px
 
-//the item to delete (in the popup)
+//the item to delete (in the delete popup)
 #deletePopUp h3
 	font-family: $mainFont
 	font-size: 22px
 	margin-bottom: 0
 
-//the popup buttons
+//the delete popup buttons
 #deletePopUp button
 	@extend #buttonSample
 	font-size: 18px
 	padding: 7px
 	margin: 7px
+
+//add chapter popup title
+#addPopUp h3
+	@extend #titleSample
+	font-size: 20px
+
+//add chapter popup text
+#addPopUp span, div
+	font-family: $mainFont
+	font-size: 18px
+
+//add chapter popup text fields
+#addPopUp input, textarea
+	font-family: $mainFont
+	line-height: 1.2em
+	font-size: 14px
+	margin: 5px
+
+//add chapter popup buttons
+#addPopUp button
+	@extend #buttonSample
+	font-size: 18px
+	margin: 7px
+	padding: 7px
