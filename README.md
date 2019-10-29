@@ -23,14 +23,12 @@ The app utilises AngularJS for its build and the build tool Gulp for automated t
 1. Download or clone the repo.
 2. cd into the project directory.
 3. Run ```npm install``` to install dependencies.
-4. Open index.html.
+4. Run ```gulp serve``` to start the local server.
+5. Open index.html.
 
 ### Users
 
-1. Download or clone the repo.
-2. cd into the project directory.
-3. cd into 'dist' directory.
-4. Open index.html.
+**Not yet ready for users!**
 
 ## Contents
 
@@ -38,6 +36,8 @@ The app contains a Story Manager module (in app.js), which contains two controll
 
 1. **libraryMgr** + **libraryCtrl** - Displays the name and synopsis of each added story. Allows users to add and deletec stories.
 2. **storyMgr** + **storyCtrl** - Displays the name and synopsis of each chapter within the currently open story. Allows users to edit a story's details, as well sa adding, deleting and editing chapters' details.
+	- **storyEdit** - Where the user can edit the story's details.
+	- **chapterEdit** - Where the user can edit a chapter's details.
 3. **settings** + **settingsCtrl** - Allows the users to change several of the app's settings. Still in development.
 
 The app also contains a service, **librarian**, which is responsible for getting a story's or a library's data and posting changes to the JSON file containing the library information (data/stories.JSON).
