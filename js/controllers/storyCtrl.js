@@ -57,6 +57,8 @@ angular.module('StoryManager')
 		*/
 		this.deleteItem = function(toDelete) {
 			document.getElementById("modalBox").className = "on";
+			document.getElementById("deletePopUp").classList.remove("off");
+			document.getElementById("deletePopUp").classList.add("on");
 			if(typeof toDelete != "string")
 				vm.forDeletion = "All chapters";
 			else
@@ -102,6 +104,8 @@ angular.module('StoryManager')
 		*/
 		this.closePopUp = function() {
 			document.getElementById("modalBox").className = "off";
+			document.getElementById("deletePopUp").classList.add("off");
+			document.getElementById("deletePopUp").classList.remove("on");
 		};
 		
 		/*

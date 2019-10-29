@@ -35,14 +35,28 @@
 	</div>
 </div>
 
-<!-- Modal box and popup -->
+<!-- Modal box and popups -->
 <div id="modalBox" class="off">
-	<div id="deletePopUp">
+	<!-- Confirm delete popup -->
+	<div id="deletePopUp" class="popup off">
 		<p>You can't undo this action!</p>
 		<p>Are you sure you want to delete</p>
 		<h3> {{ story.forDeletion }}?</h3>
 		<br>
 		<button ng-click="story.delete()">Delete</button>
 		<button ng-click="story.closePopUp()">Abort</button>
+	</div>
+	
+	<!-- Add chapter popup -->
+	<div id="addPopUp" class="popup off">
+		<h3>Edit Chapter Details</h3>
+		<span class="formTitle">Chapter Number:</span> <input type="text" value="" id="chapterID">
+		<br>
+		<span class="formTitle">Chapter Title:</span> <input type="text" value="" id="chapterTitle">
+		<br>
+		<div class="formTitle">Chapter Synopsis:</div>
+		<textarea id="chapterSynopsis" rows="7" cols="40"></textarea>
+		<br>
+		<button ng-click="story.addChapter()">Save</button>
 	</div>
 </div>
