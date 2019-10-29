@@ -204,6 +204,19 @@ angular.module('StoryManager')
 				chapter.classList.add("on");
 				chapter.classList.remove("off");
 			})
+			
+			document.getElementById("doneBtn").classList.add("on");
+			document.getElementById("doneBtn").classList.remove("off");
+		}
+		
+		this.closeRemovePanel = function() {
+			document.querySelectorAll(".remove").forEach(function(chapter) {
+				chapter.classList.add("off");
+				chapter.classList.remove("on");
+			})
+			
+			document.getElementById("doneBtn").classList.add("off");
+			document.getElementById("doneBtn").classList.remove("on");
 		}
 		
 		/*
