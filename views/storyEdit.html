@@ -28,7 +28,7 @@
 		<!-- Chapters' details -->
 		<div class="chapters">
 			<div class="chapter" ng-repeat="chapter in story.chapters">
-				<button class="remove off"><i class="fas fa-times-circle"></i></button>
+				<button class="remove off" ng-click="story.deleteItem('Chapter ' + chapter.number)"><i class="fas fa-times-circle"></i></button>
 				<div class="chapterDetails">
 					<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
 					<h4 class="chapterTitle"> {{ chapter.title }} </h4>
