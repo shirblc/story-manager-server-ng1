@@ -200,7 +200,10 @@ angular.module('StoryManager')
 		Programmer: Shir Bar Lev.
 		*/
 		this.openRemovePanel = function() {
-			
+			document.querySelectorAll(".remove").forEach(function(chapter) {
+				chapter.classList.add("on");
+				chapter.classList.remove("off");
+			})
 		}
 		
 		/*
