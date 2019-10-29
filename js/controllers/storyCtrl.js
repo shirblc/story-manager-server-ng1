@@ -17,6 +17,7 @@ angular.module('StoryManager')
 		this.chapters = storyDetails.chapters;
 		this.storyID = storyDetails.id;
 		this.chapter = loadChapterData();
+		this.forDeletion;
 		
 		/*
 		Function Name: loadChapterData()
@@ -45,6 +46,21 @@ angular.module('StoryManager')
 			vm.storyName = document.getElementById("storyTitle").value;
 			vm.storySynopsis =  document.getElementById("storySynopsis").value;
 			librarian.updateStoryDetails(vm.storyName, vm.storySynopsis);
+		};
+		
+		/*
+		Function Name: deleteItem()
+		Function Description: Opens a popup to confirm whether to delete the selected item.
+		Parameters: toDelete - the item which needs to be deleted.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.deleteItem = function(toDelete) {
+			document.getElementById("modalBox").className = "on";
+			if(typeof toDelete != "string")
+				vm.forDeletion = "All chapters";
+			else
+				vm.forDeletion = toDelete;
 		};
 		
 		/*

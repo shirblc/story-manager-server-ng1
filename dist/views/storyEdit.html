@@ -13,14 +13,14 @@
 	<textarea id="storySynopsis" rows="5" cols="40">{{ story.storySynopsis }}</textarea>
 	<br>
 	<button ng-click="story.changeDetails()">Save</button>
-	<button ng-click="story.deleteStory()">Delete Story</button>
+	<button ng-click="story.deleteItem(story.storyName)">Delete Story</button>
 </div>
 
 <div id="chapters">
 	<h3>Edit Chapters</h3>
 	<button id="addChapter" class="controlBtn" ng-click="story.addChapter()"><i class="fas fa-plus-circle"></i></button>
 	<button id="removeChapters" class="controlBtn" ng-click="story.openRemovePanel()"><i class="fas fa-minus-circle"></i></button>
-	<button id="deleteAll" class="controlBtn" ng-click="story.deleteAll()"><i class="fas fa-times-circle"></i></button>
+	<button id="deleteAll" class="controlBtn" ng-click="story.deleteItem(story.chapters)"><i class="fas fa-times-circle"></i></button>
 	<div class="chapters" ng-repeat="chapter in story.chapters">
 		<div class="chapterDetails">
 			<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
