@@ -134,6 +134,18 @@ angular.module('StoryManager')
 		}
 		
 		/*
+		Function Name: openAddPanel()
+		Function Description: Opens the panel allowing the user to insert the details for the new
+							chapter.
+		Parameters: None.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.openAddPanel = function() {
+			
+		}
+		
+		/*
 		Function Name: addChapter()
 		Function Description: Adds a new chapter.
 		Parameters: chapterName - the name of the new chapter
@@ -149,6 +161,17 @@ angular.module('StoryManager')
 				synopsis: chapterSynopsis
 			});
 			librarian.updateStory(vm.chapters);
+		}
+		
+		/*
+		Function Name: openRemovePanel()
+		Function Description: Opens the panel allowing the user to choose which chapters to delete.
+		Parameters: None.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.openRemovePanel = function() {
+			
 		}
 		
 		/*
