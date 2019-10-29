@@ -28,7 +28,7 @@ $border: thin solid #000000
 	border: $border
 
 /* =================== General Styling =================== */
-img, picture, video, embed
+img, picture, video, embed, textarea, textfield
 	max-width: 100%
 
 body
@@ -102,6 +102,7 @@ body
 	flex-wrap: wrap
 	align-content: center
 	justify-content: center
+	align-items: center
 	width: 100%
 
 //story title
@@ -110,7 +111,7 @@ body
 	display: block
 	width: 85%
 	font-size: 30px
-	padding: 15px 0 10px 8%
+	padding: 15px 0 10px 2%
 	
 //story synopsis
 .storyDetails .storySynopsis
@@ -127,7 +128,7 @@ body
 	order: 1
 	font-size: 20px
 	padding: 5px
-	margin: auto
+	margin: 0
 
 //the pre-chapters title
 .storyDetails h3
@@ -338,3 +339,64 @@ input
 	font-size: 18px
 	margin: 7px
 	padding: 7px
+
+/* =================== Responsive Styling =================== */
+//For screens up to 350px (if there are any).
+@media (max-width: 360px)
+	/* =================== Story View =================== */
+	//story title
+	.storyDetails .storyTitle
+		padding: 15px 0 10px
+		width: 75%
+
+	//the edit link for the title and synopsis
+	.storyDetails .editLink
+		margin: 5px
+
+//Breakpoint at 400px to slightly adjust the padding of the title
+@media (min-width: 400px)
+	/* =================== Story View =================== */
+	//story title
+	.storyDetails .storyTitle
+		padding-left: 3%
+
+//Breakpoint at 440px to slightly adjust the padding of the title
+@media (min-width: 440px)
+	/* =================== Story View =================== */
+	//story title
+	.storyDetails .storyTitle
+		padding-left: 4%
+
+//Breakpoint at 470px to slightly adjust the padding of the title
+@media (min-width: 470px)
+	/* =================== Story View =================== */
+	//story title
+	.storyDetails .storyTitle
+		padding-left: 5%
+
+//Breakpoint at 500px to slightly adjust the padding of the title
+@media (min-width: 500px)
+	/* =================== Story View =================== */
+	//story title
+	.storyDetails .storyTitle
+		padding-left: 6%
+
+//Breakpoint at 550px to slightly adjust the padding of the title
+@media (min-width: 570px)
+	/* =================== Story View =================== */
+	//story title
+	.storyDetails .storyTitle
+		padding-left: 7%
+
+//Breakpoint at 650 to slightly adjust the padding of the title and the padding/margin of
+//the edit link
+@media (min-width: 640px)
+	/* =================== Story View =================== */
+	//story title
+	.storyDetails .storyTitle
+		padding: 15px 0 10px 8%
+
+	//the edit link for the title and synopsis
+	.storyDetails .editLink
+		padding: 5px
+		margin: auto
