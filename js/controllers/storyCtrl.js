@@ -8,7 +8,7 @@
 //story manager controller
 //contains the currently viewed story
 angular.module('StoryManager')
-	.controller('storyCtrl', ['$stateParams', 'librarian', 'loadData', function($stateParams, librarian, loadData) {
+	.controller('storyCtrl', ['$stateParams', 'librarian', 'loadData', '$state', function($stateParams, librarian, loadData, $state) {
 		//variable declaration
 		var vm = this;
 		var storyDetails = loadData[$stateParams.id-1];
@@ -56,10 +56,24 @@ angular.module('StoryManager')
 		*/
 		this.changeChapterDetails = function()
 		{
-			var chapterNumber = document.getElementById("chapterID").value;
+			var chapterNumber = $stateParams.chapterID;
 			vm.chapters[chapterNumber-1].name = document.getElementById("chapterTitle").value;
 			vm.chapters[chapterNumber-1].name = document.getElementById("chapterSynopsis").value;
 			librarian.updateStory(vm.chapters);
+			
+			vm.changeState();
+		}
+		
+		/*
+		Function Name: changeState()
+		Function Description: Once the user is done updating the chapter, sends the user back to the
+							story page.
+		Parameters: None
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.changeState = function() {
+			$state.go('story', {id: vm.storyID});
 		}
 		
 		/*
@@ -85,7 +99,7 @@ angular.module('StoryManager')
 		*/
 		this.removeChapter = function()
 		{
-			var chapterNumber = Number(document.getElementById("chapterID").value) - 1;
+			var chapterNumber = Number($stateParams.chapterID) - 1;
 			vm.chapters.splice(chapterNumber, 1);
 			librarian.updateStory(vm.chapters);
 		}
