@@ -30,3 +30,14 @@
 		</div>
 	</div>
 </div>
+
+<div id="modalBox" class="off">
+	<div id="deletePopUp">
+		<p>You can't undo this action!</p>
+		<p>Are you sure you want to delete</p>
+		<h3> {{ story.forDeletion }}?</h3>
+		<br>
+		<button ng-click="story.delete()">Delete</button>
+		<button ng-click="story.closePopUp()">Abort</button>
+	</div>
+</div>
