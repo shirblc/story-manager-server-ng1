@@ -2,16 +2,20 @@
 	Story Manager Template 
 	Written by Shir Bar Lev  -->
 
+<!-- Navigation breadcrumb -->
 <nav>
 	<div id="breadcrumb"><a ui-sref="home">Home</a> / Story {{ story.storyID }}</div>
 </nav>
 
+<!-- Story details section -->
 <div class="storyDetails">
 	<a ui-sref="edit({ id: story.storyID })" class="editLink">Edit</a>
 	<h2 class="storyTitle"> {{ story.storyName }} </h2>
 	<p class="storySynopsis"> {{ story.storySynopsis }} </p>
+	<!-- Chapters' section -->
 	<h3> The story so far... </h3>
 		<div class="chapters" ng-repeat="chapter in story.chapters">
+			<!-- A single chapter's details -->
 			<div class="chapterDetails">
 				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
 				<h4 class="chapterTitle"> {{ chapter.title }} </h4>
