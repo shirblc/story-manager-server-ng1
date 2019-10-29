@@ -146,25 +146,37 @@ angular.module('StoryManager')
 		Programmer: Shir Bar Lev.
 		*/
 		this.openAddPanel = function() {
-			
+			document.getElementById("modalBox").className = "on";
+			document.getElementById("addPopUp").classList.remove("off");
+			document.getElementById("addPopUp").classList.add("on");
 		}
 		
 		/*
 		Function Name: addChapter()
 		Function Description: Adds a new chapter.
-		Parameters: chapterName - the name of the new chapter
-					chapterSynopsis - the synopsis of the new chapter
+		Parameters: None.
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		this.addChapter = function(chapterName, chapterSynopsis)
+		this.addChapter = function()
 		{
+			//checks whether a number was entered for chapter number
+			//if there was, places the chapter in the given place
+			//it there wasn't, simply adds it at the end of the current chapters array
+			var numChapter = (document.getElementById("chapterID").value) ? (document.getElementById("chapterID").value) : (vm.chapters.length);
+			
+			//adds the chapter to the array in the story controller and sends it to the librarian
 			vm.chapters.push({
-				number: vm.chapters.length, 
-				title: chapterName, 
-				synopsis: chapterSynopsis
+				number: numChapter, 
+				title: document.getElementById("chapterTitle").value, 
+				synopsis: document.getElementById("chapterSynopsis").value
 			});
 			librarian.updateStory(vm.chapters);
+			
+			//removes the modal box and popup
+			document.getElementById("modalBox").className = "off";
+			document.getElementById("addPopUp").classList.add("off");
+			document.getElementById("addPopUp").classList.remove("on");
 		}
 		
 		/*
