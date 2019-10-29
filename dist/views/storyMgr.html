@@ -14,9 +14,9 @@
 	<p class="storySynopsis"> {{ story.storySynopsis }} </p>
 	<!-- Chapters' section -->
 	<h3> The story so far... </h3>
-		<div class="chapters" ng-repeat="chapter in story.chapters">
+		<div class="chapters">
 			<!-- A single chapter's details -->
-			<div class="chapterDetails">
+			<div class="chapterDetails" ng-repeat="chapter in story.chapters">
 				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
 				<h4 class="chapterTitle"> {{ chapter.title }} </h4>
 				<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>

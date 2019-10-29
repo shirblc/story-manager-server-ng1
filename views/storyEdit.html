@@ -26,8 +26,8 @@
 		<button id="removeChapters" class="controlBtn" ng-click="story.openRemovePanel()"><i class="fas fa-minus-circle"></i></button>
 		<button id="deleteAll" class="controlBtn" ng-click="story.deleteItem(story.chapters)"><i class="fas fa-times-circle"></i></button>
 		<!-- Chapters' details -->
-		<div class="chapters" ng-repeat="chapter in story.chapters">
-			<div class="chapterDetails">
+		<div class="chapters">
+			<div class="chapterDetails" ng-repeat="chapter in story.chapters">
 				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
 				<h4 class="chapterTitle"> {{ chapter.title }} </h4>
 				<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
