@@ -86,8 +86,12 @@ angular.module('StoryManager')
 		*/
 		this.addChapter = function(chapterName, chapterSynopsis)
 		{
-			vm.chapters.push({number: chapters.length, title: chapterName, synopsis: chapterSynopsis});
-			librarian.updateStory(chapters);
+			vm.chapters.push({
+				number: vm.chapters.length, 
+				title: chapterName, 
+				synopsis: chapterSynopsis
+			});
+			librarian.updateStory(vm.chapters);
 		}
 		
 		/*
