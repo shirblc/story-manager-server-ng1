@@ -27,12 +27,14 @@
 		<button id="deleteAll" class="controlBtn" ng-click="story.deleteItem(story.chapters)"><i class="fas fa-times-circle"></i></button>
 		<!-- Chapters' details -->
 		<div class="chapters">
-			<div class="chapterDetails" ng-repeat="chapter in story.chapters">
-				<button class="remove"><i class="fas fa-times-circle"></i></button>
-				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
-				<h4 class="chapterTitle"> {{ chapter.title }} </h4>
-				<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
-				<a ui-sref="editChapter({ id: story.storyID, chapterID: chapter.number })">Edit</a>
+			<div class="chapter" ng-repeat="chapter in story.chapters">
+				<button class="remove off"><i class="fas fa-times-circle"></i></button>
+				<div class="chapterDetails">
+					<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
+					<h4 class="chapterTitle"> {{ chapter.title }} </h4>
+					<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
+					<a ui-sref="editChapter({ id: story.storyID, chapterID: chapter.number })">Edit</a>
+				</div>
 			</div>
 		</div>
 	</div>
