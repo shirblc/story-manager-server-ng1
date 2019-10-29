@@ -104,8 +104,21 @@ angular.module('StoryManager')
 		*/
 		this.closePopUp = function() {
 			document.getElementById("modalBox").className = "off";
-			document.getElementById("deletePopUp").classList.add("off");
-			document.getElementById("deletePopUp").classList.remove("on");
+			
+			//if the delete popup is the one from which the function was called, the function hides 
+			//it.
+			if(document.getElementById("deletePopUp").classList.contains("on"))
+				{
+					document.getElementById("deletePopUp").classList.add("off");
+					document.getElementById("deletePopUp").classList.remove("on");
+				}
+			//if it wasn't the delete popup, it was the "add" popup, so the function
+			//hides it instead
+			else
+				{
+					document.getElementById("addPopUp").classList.add("off");
+					document.getElementById("addPopUp").classList.remove("on");
+				}
 		};
 		
 		/*
