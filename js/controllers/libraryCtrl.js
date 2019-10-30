@@ -62,6 +62,18 @@ angular.module("StoryManager")
 		*/
 		this.setSelectedStory = function(numSelected)
 		{
-			selectedStory = numSelected;
+			vm.selectedStory = numSelected;
+		}
+		
+		/*
+		Function Name: openAdd()
+		Function Description: Opens the "add story" popup.
+		Parameters: None.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.openAdd = function()
+		{
+			
 		}
 }]);
