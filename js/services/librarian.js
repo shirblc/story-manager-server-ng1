@@ -5,90 +5,26 @@
 	Written by Shir Bar Lev
 */
 
-//librarian service to deal with getting and setting the stories list
+//librarian service to deal with exporting the changes the user makes to their stories
 angular.module('StoryManager')
-	.service('librarian', ['$http', function($http) {
+	.service('librarian', [function() {
 		//variable declaration
-		var myStories;
-		var currentStoryNum = 0;
-		var currentStory;
+		var vm = this;
+		this.myStories = {
+			stories: []
+		};
 		
 		/*
-		Function Name: getStory()
-		Function Description: Gets a specific story from the stories array.
-		Parameters: storyID - the number of story to get.
+		Function Name: updateStories()
+		Function Description: 
+		Parameters: stories - the updated stories array (including the new/updated story/chapters or
+							without the deleted story/chapters).
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		this.getStory = function(storyID)
-		{
-			return myStories.stories[storyID];
-		}
-		
-		/*
-		Function Name: getNumStories()
-		Function Description: Gets the number of stories that currently exist.
-		Parameters: None.
-		----------------
-		Programmer: Shir Bar Lev.
-		*/
-		this.getNumStories = function()
-		{
-			return myStories.stories.length;
-		}
-		
-		/*
-		Function Name: getCurrentStory()
-		Function Description: Gets the currently selected story.
-		Parameters: None.
-		----------------
-		Programmer: Shir Bar Lev.
-		*/
-		this.getCurrentStory = function()
-		{
-			return currentStory;
-		}
-		
-		/*
-		Function Name: setCurrentStoryNum()
-		Function Description: Sets the number of the currently selected story
-		Parameters: selectedStory - the number of the currently selected story.
-		----------------
-		Programmer: Shir Bar Lev.
-		*/
-		this.setCurrentStoryNum = function(selectedStory)
-		{
-			currentStoryNum = selectedStory;
-			currentStory = myStories.stories[selectedStory];
-		}
-		
-		/*
-		Function Name: updateStory()
-		Function Description: Updates the JSON with the details of the currently open story's chapaters.
-		Parameters: chapters - an array containing the story's chapters information.
-		----------------
-		Programmer: Shir Bar Lev.
-		*/
-		this.updateStory = function(chapters)
-		{	myStories.stories[currentStoryNum].chapters = chapters;
-			$.ajax({
-				url: "data/stories.json",
-				type: "POST",
-				data: myStories.stories[currentStoryNum]
-			});
-		}
-		
-		/*
-		Function Name: updateStoryDetails()
-		Function Description: Updates the stories array with the details of the currently open story.
-		Parameters: storyName - the updated name of the story.
-					storySynopsis - the updated synopsis of the story
-		----------------
-		Programmer: Shir Bar Lev.
-		*/
-		this.updateStoryDetails = function(storyName, storySynopsis)
-		{
-			myStories.stories[currentStoryNum].name = storyName;
-		 	myStories.stories[currentStoryNum].synopsis = storySynopsis;
+		this.updateStories = function(stories)
+		{	
+			
+			vm.myStories.stories = stories;
 		}
 }]);
