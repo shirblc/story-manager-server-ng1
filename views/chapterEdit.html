@@ -12,8 +12,8 @@
 	<h2 class="storyTitle"> {{ story.storyName }} </h2>
 	<p class="storySynopsis"> {{ story.storySynopsis }} </p>
 	<!-- Chapters' section -->
-	<h3> The story so far... </h3>
-		<div class="chapters">
+	<h3> Chapters:</h3>
+		<div class="chapterView">
 			<!-- A single chapter's details -->
 			<div class="chapterDetails" ng-repeat="chapter in story.chapters|limitTo:story.editedChapter-1">
 				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
