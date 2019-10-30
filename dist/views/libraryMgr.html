@@ -4,7 +4,8 @@
 
 <!-- Stories container -->
 <div>
-	<ul id="storiesContainer">
+	<!-- If there are stories in the array -->
+	<ul id="storiesContainer" ng-if="library.storiesDetails.length != 0">
 		<!-- Single story container -->
 		<li class="storyContainer" ng-repeat="story in library.storiesDetails">
 			<h3 class="storyTitle"> {{ story.title }} </h3>
@@ -12,4 +13,9 @@
 			<a ui-sref="story({ id: story.id })"> View Story </a>
 		</li>
 	</ul>
+	<!-- If there aren't any stories in the array -->
+	<div id="noData" ng-if="library.storiesDetails.length == 0">
+		<h3>There's nothing here!</h3>
+		<div>Create your first story with the buttons above.</div>
+	</div>
 </div>
