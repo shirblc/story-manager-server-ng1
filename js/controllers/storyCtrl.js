@@ -18,6 +18,8 @@ angular.module('StoryManager')
 		this.storyID = storyDetails.id;
 		this.chapter = loadChapterData();
 		this.forDeletion;
+		//the chapter being edited.
+		this.editedChapter = $stateParams.chapterID;
 		
 		/*
 		Function Name: loadChapterData()
