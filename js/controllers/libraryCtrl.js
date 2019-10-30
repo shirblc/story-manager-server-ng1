@@ -17,7 +17,7 @@ angular.module("StoryManager")
 		
 		/*
 		Function Name: getStoryDetails()
-		Function Description: Gets the details of each story from the librarian service and adds their
+		Function Description: Gets the details of each story from the loadData resolve and adds their
 								title and synopsis to the storiesDetails array (used by the template).
 		Parameters: None.
 		----------------
@@ -50,13 +50,12 @@ angular.module("StoryManager")
 		*/
 		this.getSelectedStory = function()
 		{
-			return selectedStory;
+			return vm.selectedStory;
 		}
 
 		/*
 		Function Name: setSelectedStory()
-		Function Description: Sets the number of the currently selected story, both in the controller
-								and in the librarian service.
+		Function Description: Sets the number of the currently selected story.
 		Parameters: numSelected - new selected story.
 		----------------
 		Programmer: Shir Bar Lev.
@@ -64,6 +63,5 @@ angular.module("StoryManager")
 		this.setSelectedStory = function(numSelected)
 		{
 			selectedStory = numSelected;
-			librarian.setCurrentStoryNum(numSelected);
 		}
 }]);
