@@ -20,3 +20,18 @@
 		<div>Create your first story with the buttons above.</div>
 	</div>
 </div>
+
+<!-- Modal box and popups -->
+<div id="modalBox" class="off">
+	<!-- Add chapter popup -->
+	<div id="addPopUp" class="popup off">
+		<h3>Add Story</h3>
+		<span class="formTitle">Story Title:</span> <input type="text" value="" id="storyTitle">
+		<br>
+		<div class="formTitle">Story Synopsis:</div>
+		<textarea id="storySynopsis" rows="7" cols="40"></textarea>
+		<br>
+		<button ng-click="library.addStory()">Save</button>
+		<button ng-click="library.closePopUp()">Abort</button>
+	</div>
+</div>
