@@ -11,6 +11,7 @@ angular.module("StoryManager")
 	.controller("libraryCtrl", ['librarian', 'loadData', function(librarian, loadData) {
 		//variable declaration
 		var vm = this;
+		this.stories = loadData;
 		this.numStories = loadData.length;
 		this.storiesDetails = getStoryDetails();
 		this.selectedStory = 0;
@@ -74,6 +75,46 @@ angular.module("StoryManager")
 		*/
 		this.openAdd = function()
 		{
+			document.getElementById("modalBox").className = "on";
+			document.getElementById("addPopUp").classList.remove("off");
+			document.getElementById("addPopUp").classList.add("on");
+		}
+		
+		/*
+		Function Name: addStory()
+		Function Description: Adds a new story.
+		Parameters: None.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.addStory = function()
+		{
+			var newStory = {
+				"id": vm.numStories + 1,
+				"name": document.getElementById("storyTitle").value,
+				"synopsis": document.getElementById("storySynopsis").value,
+				"chapters": []
+			};
 			
+			vm.stories.push(newStory);
+			librarian.updateStories(vm.stories);
+			
+			document.getElementById("modalBox").className = "off";
+			document.getElementById("addPopUp").classList.remove("on");
+			document.getElementById("addPopUp").classList.add("off");
+		}
+		
+		/*
+		Function Name: closePopUp()
+		Function Description: Closes the popup without adding a new story.
+		Parameters: None.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.closePopUp = function()
+		{
+			document.getElementById("modalBox").className = "off";
+			document.getElementById("addPopUp").classList.remove("on");
+			document.getElementById("addPopUp").classList.add("off");
 		}
 }]);
