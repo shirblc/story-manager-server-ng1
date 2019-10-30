@@ -4,9 +4,9 @@
 
 <!-- Stories container -->
 <div>
-	<ul id="storiesContainer" ng-repeat="story in library.storiesDetails">
+	<ul id="storiesContainer">
 		<!-- Single story container -->
-		<li class="storyContainer">
+		<li class="storyContainer" ng-repeat="story in library.storiesDetails">
 			<h3 class="storyTitle"> {{ story.title }} </h3>
 			<p class="storySynopsis"> {{ story.synopsis }} </p>
 			<a ui-sref="story({ id: story.id })"> View Story </a>
