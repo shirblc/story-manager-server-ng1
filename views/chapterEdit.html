@@ -7,18 +7,42 @@
 	<div id="breadcrumb"><a ui-sref="home">Home</a> / <a ui-sref="story({ id: story.storyID })">Story {{ story.storyID }}</a> / Edit</div>
 </nav>
 
-<!-- Edit Chapter section -->
-<div id="editChapter">
-	<h3>Edit Chapter Details</h3>
-	<span class="formTitle">Chapter Number:</span> <input type="text" value="{{ story.chapter.number }}" id="chapterID">
-	<br>
-	<span class="formTitle">Chapter Title:</span> <input type="text" value="{{ story.chapter.title }}" id="chapterTitle">
-	<br>
-	<div class="formTitle">Chapter Synopsis:</div>
-	<textarea id="chapterSynopsis" rows="7" cols="40">{{ story.chapter.synopsis }}</textarea>
-	<br>
-	<button ng-click="story.changeChapterDetails()">Save</button>
-	<button ng-click="story.deleteItem('Chapter ' + story.chapter.number)">Delete Chapter</button>
+<!-- Story details section -->
+<div class="storyDetails">
+	<h2 class="storyTitle"> {{ story.storyName }} </h2>
+	<p class="storySynopsis"> {{ story.storySynopsis }} </p>
+	<!-- Chapters' section -->
+	<h3> The story so far... </h3>
+		<div class="chapters">
+			<!-- A single chapter's details -->
+			<div class="chapterDetails" ng-repeat="chapter in story.chapters|limitTo:story.editedChapter-1">
+				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
+				<h4 class="chapterTitle"> {{ chapter.title }} </h4>
+				<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
+			</div>
+			
+			<!-- Edit Chapter section -->
+			<!-- Edit the selected chapter -->
+			<div id="editChapter">
+				<h3>Edit Chapter Details</h3>
+				<span class="formTitle">Chapter Number:</span> <input type="text" value="{{ story.chapter.number }}" id="chapterID">
+				<br>
+				<span class="formTitle">Chapter Title:</span> <input type="text" value="{{ story.chapter.title }}" id="chapterTitle">
+				<br>
+				<div class="formTitle">Chapter Synopsis:</div>
+				<textarea id="chapterSynopsis" rows="7" cols="40">{{ story.chapter.synopsis }}</textarea>
+				<br>
+				<button ng-click="story.changeChapterDetails()">Save</button>
+				<button ng-click="story.deleteItem('Chapter ' + story.chapter.number)">Delete Chapter</button>
+			</div>
+			
+			<!-- A single chapter's details -->
+			<div class="chapterDetails" ng-repeat="chapter in story.chapters|limitTo:story.chapters.length:story.editedChapter">
+				<h4 class="chapterTitle"> Chapter {{ chapter.number }}:</h4>
+				<h4 class="chapterTitle"> {{ chapter.title }} </h4>
+				<p class="chapterSynopsis"> {{ chapter.synopsis }} </p>
+			</div>
+		</div>
 </div>
 
 <!-- Modal box and popup -->
