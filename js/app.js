@@ -82,3 +82,8 @@ angular
 
 angular
 .module('StoryManager').$inject = ['$http'];
+
+if(navigator.serviceWorker)
+	{
+		navigator.serviceWorker.register("/sw.js");
+	}
