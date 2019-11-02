@@ -52,6 +52,13 @@ function copyFonts()
 		.pipe(gulp.dest("./dist/css"));
 }
 
+function copyServiceWorker()
+{
+	return gulp
+		.src("sw.js")
+		.pipe(gulp.dest("./dist"));
+}
+
 //deals with concating the scripts while in development mode
 function scripts()
 {
@@ -137,6 +144,7 @@ function watchFiles()
 	gulp.watch('css/*.css', styles);
 	gulp.watch('css/*.ttf', copyFonts);
 	gulp.watch('/js/**/*.js', scripts);
+	gulp.watch('/sw.js', copyServiceWorker);
 }
 
 //exports for gulp to recognise them as tasks
@@ -145,6 +153,7 @@ exports.copyViews = copyViews;
 exports.copyImgs = copyImgs;
 exports.styles = styles;
 exports.copyFonts = copyFonts;
+exports.copyServiceWorker = copyServiceWorker;
 exports.scripts = scripts;
 exports.scriptsDist = scriptsDist;
 exports.jasmineBrowserTest = jasmineBrowserTest;
