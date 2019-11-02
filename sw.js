@@ -29,3 +29,31 @@ this.addEventListener("install", function(event) {
 		})
 	)
 });
+
+//fetch event listener
+this.addEventListener("fetch", function(event) {
+	let reqUrl = event.request.url;
+	let urlToGet;
+	
+	//if the requested page is the home page
+	if(reqUrl.pathname == "/")
+		urlToGet = "index.html";\
+	else
+		urlToGet = reqUrl;
+	
+	//response
+	event.respondWith(
+		caches.match(urlToGet).then(function(response) {
+			//if the url exists in the cache
+			if(response)
+				{
+					return response;
+				}
+			//if the url doesn't exist in the cache
+			else
+				{
+					return fetch(urlToGet);
+				}
+		})
+	);
+});
