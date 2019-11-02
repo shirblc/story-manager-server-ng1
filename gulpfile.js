@@ -63,7 +63,7 @@ function copyServiceWorker()
 function scripts()
 {
 	return gulp
-		.src("js/**/*js")
+		.src("js/**/*.js")
 		.pipe(sourcemaps.init())
 		.pipe(babel({presets: ['@babel/preset-env']}))
 		.pipe(order([
@@ -80,7 +80,7 @@ function scripts()
 function scriptsDist()
 {
 	return gulp
-		.src("js/**/*js")
+		.src("js/**/*/js")
 		.pipe(sourcemaps.init())
 		.pipe(babel({presets: ['@babel/preset-env']}))
 		.pipe(order([
