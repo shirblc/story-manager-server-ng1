@@ -52,6 +52,19 @@ this.addEventListener("fetch", function(event) {
 			//if the url doesn't exist in the cache
 			else
 				{
+					//if the url isn't in the cache,
+					//fetch it and add it to the cache
+					fetch(urlToGet).then(function(response) {
+						caches.open("story-mgr-v1").then(function(cache) {
+							cache.put(urlToGet, response);
+						})
+					//since fetch only fails when there's no connection,
+					//if "catch" is called it means there's no connection
+					}).catch(function() {
+						console.log("There's no internet connection!");
+					});
+					
+					//fetches the url from the internet and returns the response
 					return fetch(urlToGet);
 				}
 		})
