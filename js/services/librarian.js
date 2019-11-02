@@ -24,7 +24,19 @@ angular.module('StoryManager')
 		*/
 		this.updateStories = function(stories)
 		{	
-			
 			vm.myStories.stories = stories;
+			vm.postToCache();
+		}
+		
+		/*
+		Function Name: postToCache()
+		Function Description: Sends the updated stories object to the Service Worker so they
+							can be cached.
+		Parameters: None.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.postToCache = function() {
+			navigator.serviceWorker.controller.postMessage(vm.myStories);
 		}
 }]);
