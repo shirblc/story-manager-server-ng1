@@ -47,6 +47,26 @@ this.addEventListener("fetch", function(event) {
 			//if the url exists in the cache
 			if(response)
 				{
+					//fetches the url from the server and checks whether it was
+					//updated after it was cached. If it was, replaces the URL in
+					//the cache with the newly fetched one
+					fetch(urlToGet).then(function(fetchResponse) {
+						//checks the "last modified" date for both the cached and the
+						//fetched urls
+						let fetchedDate = fetchResponse.headers.get("Last-Modified");
+						let cachedDate = response.headers.get("Last-Modified");
+						let fetchedDateSec = new Date(fetchedDate);
+						let cachedDateSec = new Date(cachedDate);
+						
+						//if the asset was changed since it was cached, replace the
+						//cached asset with the new asset
+						if(fetchedDateSec > cachedDateSec)
+							caches.open("story-mgr-v1").then(function(cache) {
+								cache.put(urlToGet, fetchResponse);
+							})
+					})
+					
+					//returns the response from cache
 					return response;
 				}
 			//if the url doesn't exist in the cache
