@@ -90,3 +90,17 @@ this.addEventListener("fetch", function(event) {
 		})
 	);
 });
+
+//message event listener, in case the application sends a message to the
+//service worker
+this.addEventListener("message", function(event) {
+	//open the current cache
+	caches.open("story-mgr-v1").then(function(cache) {
+		//details and blob for the stories
+		let responseDetails = { "status": 200, "statusText": "OK" };
+		let stories = new Blob(event.data, {type: "application/json"});
+		
+		//replaces the existing "stories.json"
+		cache.put("/data/stories.json", new Response(stories, responseDetails));
+	});
+});
