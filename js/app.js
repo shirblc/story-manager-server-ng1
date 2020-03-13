@@ -18,7 +18,7 @@ angular
 			loadData: function($http) {
 				return $http({
 					method: 'GET',
-					url: '/data/stories.json'
+					url: '/server/stories.json'
 				}).then(function(response) {
 					return response.data.stories;
 				});
@@ -35,7 +35,7 @@ angular
 			loadData: function($http) {
 				return $http({
 					method: 'GET',
-					url: '/data/stories.json'
+					url: '/server/stories.json'
 				}).then(function(response) {
 					return response.data.stories;
 				});
@@ -52,7 +52,7 @@ angular
 			loadData: function($http) {
 				return $http({
 					method: 'GET',
-					url: '/data/stories.json'
+					url: '/server/stories.json'
 				}).then(function(response) {
 					return response.data.stories;
 				});
@@ -70,7 +70,7 @@ angular
 			loadData: function($http) {
 				return $http({
 					method: 'GET',
-					url: '/data/stories.json'
+					url: '/server/stories.json'
 				}).then(function(response) {
 					return response.data.stories;
 				});
