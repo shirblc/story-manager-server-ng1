@@ -15,8 +15,8 @@
   "author": "Shir Bar Lev",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
@@ -24,9 +24,9 @@
     "gulp-uglify": "^3.0.2"
   },
   "dependencies": {
-    "@uirouter/angularjs": "^1.0.23",
+    "@uirouter/angularjs": "^1.0.25",
     "angular": "^1.7.9",
-    "autoprefixer": "^9.6.5",
+    "autoprefixer": "^9.7.5",
     "gulp-concat": "^2.6.1",
     "gulp-jasmine-browser": "^4.1.0",
     "gulp-order": "^1.2.0",
