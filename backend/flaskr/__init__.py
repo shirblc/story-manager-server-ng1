@@ -8,14 +8,18 @@ def create_app():
 
     # Routes
     # -----------------------------------------------------------------
-    # Home route
+    # Endpoint: GET /
+    # Description: Gets all stories in the library.
+    # Parameters: None.
     @app.route('/')
     def index():
         return jsonify({
             'success': True
         })
 
-    # Story route
+    # Endpoint: GET /story/<story_id>
+    # Description: Gets the details of a specific story, including its chapters.
+    # Parameters: story_id - the ID of the story to fetch.
     @app.route('/story/<story_id>')
     def get_story(story_id):
         story = Story.query.filter(Story.id == story_id).one_or_none()
@@ -41,6 +45,7 @@ def create_app():
             'success': False,
             'code': 404,
             'message': 'The resource you were looking for cannot be found.'
-        })
+            }), 404
+
 
     return app
