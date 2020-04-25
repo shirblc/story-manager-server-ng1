@@ -6,16 +6,16 @@ import os
 # Database configuration
 databate_username = os.environ.get('DBUSERNAME')
 database_name = 'story_manager'
-database_path = 'postgres://{}@localhost:5432/{}'.format(databate_username, databate_name)
+database_path = 'postgres://{}@localhost:5432/{}'.format(databate_username, database_name)
 
 db = SQLAlchemy()
 
 # Database setup
 def database_setup(app):
 	app.config["SQLALCHEMY_DATABASE_URI"] = database_path
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    db.init_app(app)
-    migrate = Migrate(app, db)
+	app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+	db.init_app(app)
+	migrate = Migrate(app, db)
 
 # Models
 # -----------------------------------------------------------------
@@ -73,7 +73,7 @@ class Chapter(db.Model):
 # Parameters: Object to insert (either story or chapter).
 def insert(obj):
 	add_obj = {}
-	
+
 	# Try to add the object to the database
 	try:
 		db.session.add(obj)
@@ -85,7 +85,7 @@ def insert(obj):
 	# Close the connection either way
 	finally:
 		db.session.close()
-		
+
 	return jsonify({
 		'success': True,
 		'added': added_obj
@@ -97,7 +97,7 @@ def insert(obj):
 # Parameters: Object to update (either story or chapter).
 def update(obj):
 	updated_obj = {}
-	
+
 	# Try to update the object's data in the database
 	try:
 		db.session.add(obj)
@@ -109,7 +109,7 @@ def update(obj):
 	# Close the connection either way
 	finally:
 		db.session.close()
-	
+
 	return jsonify({
 		'success': True,
 		'updated': updated_obj
@@ -121,17 +121,17 @@ def update(obj):
 # Parameters: ID and type of the object to delete.
 def delete_single(obj_type, obj_id):
 	to_delete = {}
-	
+
 	# Checks whether the object the user is trying to delete is a story or a chapter
 	if(obj_type is 'Story'):
 		to_delete = db.session.query(Story).filter(Story.id == obj_id).one_or_none()
 	else:
 		to_delete = db.session.query(Chapter).filter(Chapter.id == obj_id).one_or_none()
-	
+
 	# If there's no record with that ID
 	if(to_delete is None):
 		abort(404)
-	
+
 	# Try to update the object's data in the database
 	try:
 		db.session.delete(to_delete)
@@ -142,7 +142,7 @@ def delete_single(obj_type, obj_id):
 	# Close the connection either way
 	finally:
 		db.session.close()
-	
+
 	return jsonify({
 		'success': True,
 		'deleted': obj_id
@@ -178,7 +178,7 @@ def delete_all(obj_type, story_id=None):
 		# Close the connection either way
 		finally:
 			db.session.close()
-			
+
 	return jsonify({
 		'success': True,
 		'story_id': story_id

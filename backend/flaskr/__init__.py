@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, abort
 
-from models import db_setup, Story, Chapter, insert, update, delete_single, delete_all
+from models import database_setup, Story, Chapter, insert, update, delete_single, delete_all
 
 # Create Flask app
 def create_app():
@@ -16,37 +16,37 @@ def create_app():
         return jsonify({
             'success': True
         })
-	
-	# Endpoint: POST /
+
+    # Endpoint: POST /
     # Description: Adds a new story to the library or updates an existing story.
     # Parameters: None.
-	@app.route('/', methods=['POST'])
-	def addStory():
-		new_story_data = json.loads(request.data)
-		story_details = Story.query.filter(Story.id == new_story_data['id']).one_or_none()
-		
-		# Check whether it's a new story or the user is trying to update an existing story
-		# If the user is creating a new story
-		if(story_details is None):
-			new_story = Story(title=new_story_data['title'], synopsis=new_story_dat['synopsis'])
-			# Try to add the new story
-			try:
-				insert(new_story)
-			except:
-				abort(500)
-		# If the user is updating an existing story
-		else:
-			story_details.title = new_story_data['title']
-			story_details.synopsis = new_story_data['synopsis']
-			# Try to update the story
-			try:
-				update(story_details)
-			except:
-				abort(500)
-		
-		return jsonify({
-			'success': True
-		})
+    @app.route('/', methods=['POST'])
+    def addStory():
+        new_story_data = json.loads(request.data)
+        story_details = Story.query.filter(Story.id == new_story_data['id']).one_or_none()
+
+        # Check whether it's a new story or the user is trying to update an existing story
+        # If the user is creating a new story
+        if(story_details is None):
+            new_story = Story(title=new_story_data['title'], synopsis=new_story_dat['synopsis'])
+            # Try to add the new story
+            try:
+                insert(new_story)
+            except:
+                abort(500)
+        # If the user is updating an existing story
+        else:
+            story_details.title = new_story_data['title']
+            story_details.synopsis = new_story_data['synopsis']
+            # Try to update the story
+            try:
+                update(story_details)
+            except:
+                abort(500)
+
+        return jsonify({
+            'success': True
+            })
 
     # Endpoint: GET /story/<story_id>
     # Description: Gets the details of a specific story, including its chapters.
