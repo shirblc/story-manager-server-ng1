@@ -143,7 +143,7 @@ function watchFiles()
 	gulp.watch('img/*', copyImgs);
 	gulp.watch('css/*.css', styles);
 	gulp.watch('css/*.ttf', copyFonts);
-	gulp.watch('/js/**/*.js', scripts);
+	gulp.watch('js/**/*.js', scripts);
 	gulp.watch('/sw.js', copyServiceWorker);
 }
 
