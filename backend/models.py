@@ -25,7 +25,7 @@ class Story(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
     synopsis = db.Column(db.String(240))
-    chapters = db.relationship('Chapter', backref='story_id')
+    chapters = db.relationship('Chapter', backref='story')
 
     # Get formatted story
     def format(self):
@@ -123,7 +123,7 @@ def delete_single(obj_type, obj_id):
 	to_delete = {}
 
 	# Checks whether the object the user is trying to delete is a story or a chapter
-	if(obj_type is 'Story'):
+	if(obj_type is Story):
 		to_delete = db.session.query(Story).filter(Story.id == obj_id).one_or_none()
 	else:
 		to_delete = db.session.query(Chapter).filter(Chapter.id == obj_id).one_or_none()
@@ -154,7 +154,7 @@ def delete_single(obj_type, obj_id):
 # Parameters: Type of the object to delete; Story ID if the object to delete is a story's chapters.
 def delete_all(obj_type, story_id=None):
 	# If the user asked to delete all stories
-	if(obj_type is 'Story'):
+	if(obj_type is Story):
 		# Try to delete all stories and chapters
 		try:
 			db.session.query(Story).delete()
