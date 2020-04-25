@@ -24,26 +24,13 @@ def create_app():
     @app.route('/', methods=['POST'])
     def addStory():
         new_story_data = json.loads(request.data)
-        story_details = Story.query.filter(Story.id == new_story_data['id']).one_or_none()
+        new_story = Story(title=new_story_data['title'], synopsis=new_story_dat['synopsis'])
 
-        # Check whether it's a new story or the user is trying to update an existing story
-        # If the user is creating a new story
-        if(story_details is None):
-            new_story = Story(title=new_story_data['title'], synopsis=new_story_dat['synopsis'])
-            # Try to add the new story
-            try:
-                insert(new_story)
-            except:
-                abort(500)
-        # If the user is updating an existing story
-        else:
-            story_details.title = new_story_data['title']
-            story_details.synopsis = new_story_data['synopsis']
-            # Try to update the story
-            try:
-                update(story_details)
-            except:
-                abort(500)
+        # Try to add the new story
+        try:
+            insert(new_story)
+        except:
+            abort(500)
 
         return jsonify({
             'success': True
@@ -61,6 +48,29 @@ def create_app():
             abort(404)
         else:
             formatted_story = story.format()
+
+        return jsonify({
+            'success': True,
+            'story': formatted_story
+        })
+
+    # Endpoint: POST /story/<story_id>
+    # Description: Updates an existing story.
+    # Parameters: story_id - the ID of the story to update.
+    @app.route('/story/<story_id>', methods=['POST'])
+    def edit_story(story_id):
+        new_story_details = json.loads(request.data)
+        story_details = Story.query.filter(Story.id == new_story_data['id']).one_or_none()
+
+        story_details.title = new_story_details['title']
+        story_details.synopsis = new_story_details['synopsis']
+
+        # Try to update the story
+        try:
+            update(story_details)
+            formatted_story = story_details.format()
+        except:
+            abort(500)
 
         return jsonify({
             'success': True,
