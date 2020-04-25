@@ -1,11 +1,19 @@
 from flask import Flask, jsonify, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+import os
+
+# Database configuration
+databate_username = os.environ.get('DBUSERNAME')
+database_name = 'story_manager'
+database_path = 'postgres://{}@localhost:5432/{}'.format(databate_username, databate_name)
 
 db = SQLAlchemy()
 
 # Database setup
 def database_setup(app):
+	app.config["SQLALCHEMY_DATABASE_URI"] = database_path
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
     migrate = Migrate(app, db)
 
