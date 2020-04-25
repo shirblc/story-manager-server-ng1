@@ -5,6 +5,7 @@ from models import database_setup, Story, Chapter, insert, update, delete_single
 # Create Flask app
 def create_app():
     app = Flask('__name__')
+    database_setup(app)
 
     # Routes
     # -----------------------------------------------------------------
