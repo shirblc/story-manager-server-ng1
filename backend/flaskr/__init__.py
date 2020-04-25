@@ -67,6 +67,25 @@ def create_app():
             'story': formatted_story
         })
 
+    # Endpoint: GET /story/<story_id>/chapters/<chapter_id>
+    # Description: Gets the details of a specific chapter within a story.
+    # Parameters: story_id - the ID of the story to fetch.
+    #             chapter_id - the ID of the chapter to fetch.
+    @app.route('/story/<story_id>/chapters/<chapter_number>')
+    def get_chapter(story_id, chapter_number):
+        chapter = Chapter.query.filter(Chapter.story_id == story_id).filter(Chapter.number == chapter_number).one_or_none()
+
+        # Checks whether this story has a chapter in that location
+        if(chapter is None):
+            abort(404)
+        else:
+            formatted_chapter = chapter.format()
+
+        return jsonify({
+            'success': True,
+            'chapter': formatted_chapter
+        })
+
 
     # Error Handlers
     # -----------------------------------------------------------------
