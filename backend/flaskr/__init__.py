@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, abort
 
-from models import db_setup, Story, Chapter
+from models import db_setup, Story, Chapter, insert, update, delete_single, delete_all
 
 # Create Flask app
 def create_app():
@@ -16,6 +16,24 @@ def create_app():
         return jsonify({
             'success': True
         })
+	
+	# Endpoint: POST /
+    # Description: Adds a new story to the library.
+    # Parameters: None.
+	@app.route('/', methods=['POST'])
+	def addStory():
+		new_story_data = json.loads(request.data)
+		new_story = Story(title=new_story_data['title'], synopsis=new_story_dat['synopsis'])
+		
+		# Try to add the new story
+		try:
+			insert(new_story)
+		except:
+			abort(500)
+		
+		return jsonify({
+			'success': True
+		})
 
     # Endpoint: GET /story/<story_id>
     # Description: Gets the details of a specific story, including its chapters.
