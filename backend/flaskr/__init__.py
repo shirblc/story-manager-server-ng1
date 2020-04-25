@@ -18,18 +18,31 @@ def create_app():
         })
 	
 	# Endpoint: POST /
-    # Description: Adds a new story to the library.
+    # Description: Adds a new story to the library or updates an existing story.
     # Parameters: None.
 	@app.route('/', methods=['POST'])
 	def addStory():
 		new_story_data = json.loads(request.data)
-		new_story = Story(title=new_story_data['title'], synopsis=new_story_dat['synopsis'])
+		story_details = Story.query.filter(Story.id == new_story_data['id']).one_or_none()
 		
-		# Try to add the new story
-		try:
-			insert(new_story)
-		except:
-			abort(500)
+		# Check whether it's a new story or the user is trying to update an existing story
+		# If the user is creating a new story
+		if(story_details is None):
+			new_story = Story(title=new_story_data['title'], synopsis=new_story_dat['synopsis'])
+			# Try to add the new story
+			try:
+				insert(new_story)
+			except:
+				abort(500)
+		# If the user is updating an existing story
+		else:
+			story_details.title = new_story_data['title']
+			story_details.synopsis = new_story_data['synopsis']
+			# Try to update the story
+			try:
+				update(story_details)
+			except:
+				abort(500)
 		
 		return jsonify({
 			'success': True
