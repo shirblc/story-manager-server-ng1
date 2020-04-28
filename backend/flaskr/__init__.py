@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify, abort, render_template
 
 from models import database_setup, Story, Chapter, insert, update, delete_single, delete_all
 
@@ -7,6 +7,22 @@ def create_app():
     app = Flask('__name__', template_folder='../frontend', static_folder='../frontend/static')
     database_setup(app)
 
+    # Format and paginate stories
+    def paginate_stories(stories, current_page):
+        stories_per_page = 10
+        start_index = stories_per_page * (current_page - 1)
+        formatted_stories = []
+
+        for story in stories:
+            formatted_story = {
+                'id': story.id,
+                'title': story.title,
+                'synopsis': story.synopsis
+            }
+            formatted_stories.append(formatted_story)
+
+        return formatted_stories[start_index:(start_index+9)]
+
     # Routes
     # -----------------------------------------------------------------
     # Endpoint: GET /
@@ -14,9 +30,11 @@ def create_app():
     # Parameters: None.
     @app.route('/')
     def index():
-        return jsonify({
-            'success': True
-        })
+        stories = Story.query.all()
+        current_page = request.args.get('page', 1, type=int)
+        paginated_stories = paginate_stories(stories, current_page)
+
+        return render_template('index.html')
 
     # Endpoint: POST /
     # Description: Adds a new story to the library or updates an existing story.
