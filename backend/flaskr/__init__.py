@@ -4,7 +4,7 @@ from models import database_setup, Story, Chapter, insert, update, delete_single
 
 # Create Flask app
 def create_app():
-    app = Flask('__name__')
+    app = Flask('__name__', template_folder='../frontend', static_folder='../frontend/static')
     database_setup(app)
 
     # Routes
