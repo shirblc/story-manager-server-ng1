@@ -204,16 +204,17 @@ angular.module('StoryManager')
 			//if there was, places the chapter in the given place
 			//it there wasn't, simply adds it at the end of the current chapters array
 			var numChapter = (document.getElementById("chapterID").value) ? (document.getElementById("chapterID").value) : (vm.chapters.length + 1);
+			var newChapter = {
+					number: numChapter, 
+					title: document.getElementById("chapterTitle").value, 
+					synopsis: document.getElementById("chapterSynopsis").value
+				}
 			
 			//checks if there's already a chapter there
 			//if there is
 			if(vm.chapters[numChapter-1])
 				{
-					vm.chapters.splice(numChapter-1, 0, {
-						number: numChapter, 
-						title: document.getElementById("chapterTitle").value, 
-						synopsis: document.getElementById("chapterSynopsis").value
-					});
+					vm.chapters.splice(numChapter-1, 0, newChapter);
 					
 					vm.chapters.forEach(function(chapter, index) {
 						chapter.number = index + 1;
@@ -223,15 +224,11 @@ angular.module('StoryManager')
 			else
 				{
 					//adds the chapter to the array in the story controller and sends it to the librarian
-					vm.chapters.push({
-						number: numChapter, 
-						title: document.getElementById("chapterTitle").value, 
-						synopsis: document.getElementById("chapterSynopsis").value
-					});
+					vm.chapters.push(newChapter);
 				}
 			
-			vm.stories[vm.storyID-1].chapters = vm.chapters;
-			librarian.updateStories(vm.stories);
+			vm.storyDetails.chapters = vm.chapters;
+			librarian.addChapter(newChapter, vm.storyID);
 			
 			//removes the modal box and popup
 			document.getElementById("modalBox").className = "off";

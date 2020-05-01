@@ -61,6 +61,31 @@ angular.module('StoryManager')
 		}
 		
 		/*
+		Function Name: addChapter()
+		Function Description: Adds a new chapter.
+		Parameters: chapter - the new chapter.
+							   storyID - the ID of the story.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.addChapter = function(chapter, storyID)
+		{
+			vm.myStories.stories[storyID-1].chapters.push(chapter);
+			
+			// Sends the new chapter to the server
+			$http({
+					method: 'POST',
+					url: `http://localhost:5000/story/${storyID}`,
+					data: JSON.stringify(chapter)
+				}).then(function(response) {
+					return response.data;
+				});
+			
+			// Updates the service worker
+			vm.postToCache();
+		}
+		
+		/*
 		Function Name: postToCache()
 		Function Description: Sends the updated stories object to the Service Worker so they
 							can be cached.
