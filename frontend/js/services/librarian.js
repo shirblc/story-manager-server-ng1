@@ -37,6 +37,30 @@ angular.module('StoryManager')
 		}
 		
 		/*
+		Function Name: updateStory()
+		Function Description: Updates an existing story.
+		Parameters: updatedStory - Updated story data.
+		----------------
+		Programmer: Shir Bar Lev.
+		*/
+		this.updateStory = function(updatedStory)
+		{
+			vm.myStories.stories[updatedStory.id-1] = updatedStory;
+			
+			// Sends the new story to the server
+			$http({
+					method: 'POST',
+					url: `http://localhost:5000/story/${updatedStory.id}`,
+					data: JSON.stringify(updatedStory)
+				}).then(function(response) {
+					return response.data;
+				});
+			
+			// Updates the service worker
+			vm.postToCache();
+		}
+		
+		/*
 		Function Name: postToCache()
 		Function Description: Sends the updated stories object to the Service Worker so they
 							can be cached.

@@ -11,12 +11,11 @@ angular.module('StoryManager')
 	.controller('storyCtrl', ['$stateParams', 'librarian', 'loadData', '$state', function($stateParams, librarian, loadData, $state) {
 		//variable declaration
 		var vm = this;
-		this.stories = loadData;
-		var storyDetails = loadData[$stateParams.id-1];
-		this.storyName = storyDetails.name;
-		this.storySynopsis = storyDetails.synopsis;
-		this.chapters = storyDetails.chapters;
-		this.storyID = storyDetails.id;
+		this.storyDetails = loadData;
+		this.storyName = this.storyDetails.name;
+		this.storySynopsis = this.storyDetails.synopsis;
+		this.chapters = this.storyDetails.chapters;
+		this.storyID = this.storyDetails.id;
 		this.chapter = loadChapterData();
 		this.forDeletion;
 		//the chapter being edited.
@@ -50,7 +49,8 @@ angular.module('StoryManager')
 			vm.storySynopsis =  document.getElementById("storySynopsis").value;
 			vm.stories[vm.storyID-1].name = vm.storyName;
 			vm.stories[vm.storyID-1].synopsis = vm.storySynopsis;
-			librarian.updateStories(vm.stories);
+			
+			librarian.updateStory(vm.storyDetails);
 		};
 		
 		/*
