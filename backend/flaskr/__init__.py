@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, abort
+from flask_cors import CORS
 
 from models import database_setup, Story, Chapter, insert, update, delete_single, delete_all
 
@@ -6,6 +7,15 @@ from models import database_setup, Story, Chapter, insert, update, delete_single
 def create_app():
     app = Flask('__name__')
     database_setup(app)
+    CORS(app)
+
+    # Adds CORS headers
+    @app.after_request
+    def after_request(response):
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS')
+
+        return response
 
     # Routes
     # -----------------------------------------------------------------
