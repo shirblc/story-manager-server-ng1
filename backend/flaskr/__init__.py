@@ -40,8 +40,13 @@ def create_app():
     # Parameters: None.
     @app.route('/')
     def index():
+        stories = Story.query.all()
+        current_page = request.args.get('page', 1, type=int)
+        paginated_stories = paginate_stories(stories, current_page)
+
         return jsonify({
-            'success': True
+            'success': True,
+            'stories': paginated_stories
         })
 
     # Endpoint: POST /
