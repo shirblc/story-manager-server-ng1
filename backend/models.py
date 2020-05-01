@@ -46,6 +46,24 @@ class Story(db.Model):
 
         return story
 
+	# Updates an existing database record.
+	def update(self):
+		# Try to update the object's data in the database
+		try:
+			db.session.commit()
+			updated_obj = obj.format()
+		# If there's an error, abort and rollback
+		except Exception as e:
+			db.session.rollback()
+		# Close the connection either way
+		finally:
+			db.session.close()
+
+		return jsonify({
+			'success': True,
+			'updated': updated_obj
+		})
+
 # Chapter Model
 class Chapter(db.Model):
     __tablename__ = 'chapters'
@@ -64,6 +82,24 @@ class Chapter(db.Model):
         chapter['synopsis'] = self.synopsis
 
         return chapter
+
+	# Updates an existing database record.
+	def update(self):
+		# Try to update the object's data in the database
+		try:
+			db.session.commit()
+			updated_obj = obj.format()
+		# If there's an error, abort and rollback
+		except Exception as e:
+			db.session.rollback()
+		# Close the connection either way
+		finally:
+			db.session.close()
+
+		return jsonify({
+			'success': True,
+			'updated': updated_obj
+		})
 
 
 # Database management methods
@@ -92,17 +128,15 @@ def insert(obj):
 	})
 
 
-# Method: Update
-# Description: Updates an existing database record.
-# Parameters: Object to update (either story or chapter).
-def update(obj):
-	updated_obj = {}
-
-	# Try to update the object's data in the database
+# Method: Update_chapters
+# Description: Updates multiple chapters (in case of a chapter shift).
+# Parameters: Chapters to update.
+def update_chapters(chapters):
+	# Try to add the object to the database
 	try:
-		db.session.add(obj)
+		db.session.add_all(chapters)
 		db.session.commit()
-		updated_obj = obj.format()
+		added_length = len(chapters)
 	# If there's an error, abort and rollback
 	except Exception as e:
 		db.session.rollback()
@@ -112,7 +146,7 @@ def update(obj):
 
 	return jsonify({
 		'success': True,
-		'updated': updated_obj
+		'added': added_length
 	})
 
 
