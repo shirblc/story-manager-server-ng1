@@ -184,7 +184,7 @@ def create_app():
     # Description: Edits an existing chapter.
     # Parameters: story_id - the ID of the story to fetch.
     #             chapter_id - the ID of the chapter to fetch.
-    @app.route('/story/<story_id>/chapters/<chapter_number>')
+    @app.route('/story/<story_id>/chapters/<chapter_number>', methods=['POST'])
     def edit_chapter(story_id, chapter_number):
         chapter = Chapter.query.filter(Chapter.story_id == story_id).filter(Chapter.number == chapter_number).one_or_none()
         edited_chapter = json.loads(request.data)
