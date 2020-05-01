@@ -1,3 +1,4 @@
+
 //install event listener
 this.addEventListener("install", function(event) {
 	event.waitUntil(
@@ -37,7 +38,7 @@ this.addEventListener("fetch", function(event) {
 	
 	//if the requested page is the home page
 	if(reqUrl.pathname == "/")
-		urlToGet = "index.html";\
+		urlToGet = "index.html";
 	else
 		urlToGet = reqUrl;
 	
