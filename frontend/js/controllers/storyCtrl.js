@@ -136,31 +136,47 @@ angular.module('StoryManager')
 		*/
 		this.changeChapterDetails = function()
 		{
-			var chapterNumber = document.getElementById("chapterID").value;
+			var chapterID = document.getElementById("chapterID").value;
+			var editedChapter =  {
+				id: chapterID,
+				number: document.getElementById("chapterNum").value, 
+				title: document.getElementById("chapterTitle").value, 
+				synopsis: document.getElementById("chapterSynopsis").value
+			}
 			
-			//checks whether there's already a chapter there
-			//if there is
-			if(vm.chapters[chapterNumber-1])
+			//if the chapter's number wasn't changed
+			if(editedChapter.number == vm.chapter.number && editedChapter.id == vm.chapter.id)
 				{
-					vm.chapters.splice(chapterNumber-1, 0, {
-						number: chapterNumber, 
-						title: document.getElementById("chapterTitle").value, 
-						synopsis: document.getElementById("chapterSynopsis").value
-					});
-					
-					vm.chapters.forEach(function(chapter, index) {
-						chapter.number = index + 1;
-					});
+					vm.chapter.name = editedChapter.title;
+					vm.chapter.synopsis = editedChapter.synopsis;
+					vm.chapters[vm.chapter.number-1] = editedChapter;
 				}
-			//if there isn't
 			else
 				{
-					vm.chapters[chapterNumber-1].name = document.getElementById("chapterTitle").value;
-					vm.chapters[chapterNumber-1].synopsis = document.getElementById("chapterSynopsis").value;
+					//checks whether there's already a chapter there
+					//if there is, put it in the new location and move all chapters from there on forward
+					if(vm.chapters[vm.chapter.number-1])
+						{
+							vm.chapters.splice(vm.chapter.number-1, 0, editedChapter);
+							
+							vm.chapters.forEach(function(chapter, index) {
+								if(index > vm.chapter.number)
+									{
+										chapter.number = index + 1;
+									}
+							});
+						}
+					//if there isn't
+					else
+						{
+							vm.chapters[vm.chapter.number-1].number = editedChapter.number;
+							vm.chapters[vm.chapter.number-1].name = editedChapter.title;
+							vm.chapters[vm.chapter.number-1].synopsis = editedChapter.synopsis;
+						}
 				}
 			
-			vm.stories[vm.storyID-1].chapters = vm.chapters;
-			librarian.updateStories(vm.stories);
+			vm.storyDetails.chapters = vm.chapters;
+			librarian.editChapter(editedChapter, vm.storyID);
 			
 			vm.changeState();
 		}
