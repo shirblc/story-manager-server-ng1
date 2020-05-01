@@ -50,7 +50,7 @@ def create_app():
         })
 
     # Endpoint: POST /
-    # Description: Adds a new story to the library or updates an existing story.
+    # Description: Adds a new story to the library.
     # Parameters: None.
     @app.route('/', methods=['POST'])
     def addStory():
@@ -85,51 +85,48 @@ def create_app():
             'story': formatted_story
         })
 
+    # Endpoint: PATCH /story/<story_id>
+    # Description: Updates an existing story.
+    # Parameters: story_id - the ID of the story to update.
+    @app.route('/story/<story_id>', methods=['PATCH'])
+    def update_story(story_id):
+        updated_story = json.loads(request.data)
+        story_details = Story.query.filter(Story.id == updated_story['id']).one_or_none()
+        return_object = {}
+
+        # If there's no story with that ID, abort
+        if(story_details is None):
+            abort(404)
+        # Otherwise update the story
+        else:
+            story_details.title = updated_story['title']
+            story_details.synopsis = updated_story['synopsis']
+
+            # Try to update the database
+            try:
+                story_details.update()
+                return_object = story_details.format()
+            except:
+                abort(500)
+
+        return jsonify({
+            'success': True,
+            'story': return_object
+        })
+
     # Endpoint: POST /story/<story_id>
-    # Description: Updates an existing story or adds a chapter to a story.
+    # Description: Adds a chapter to a story.
     # Parameters: story_id - the ID of the story to update.
     @app.route('/story/<story_id>', methods=['POST'])
-    def post_to_story(story_id):
-        post_data = json.loads(request.data)
+    def add_chapter(story_id):
+        new_chapter_data = json.loads(request.data)
+        new_chapter = Chapter(number=new_chapter_data['number'], title=new_chapter_data['title'], synopsis=new_chapter_data['synopsis'], story_id=story_id)
 
-        # If there are chapter, it means it's a story edit
-        if('chapters' in post_data):
-            story_details = Story.query.filter(Story.id == post_data['id']).one_or_none()
-            return_object = {}
-
-            # If there's no story with that ID, abort
-            if(story_details is None):
-                abort(404)
-            # Otherwise update the story
-            else:
-                story_details.title = new_story_details['title']
-                story_details.synopsis = new_story_details['synopsis']
-
-                # Try to update the database
-                try:
-                    story_details.update()
-                    return_object = story_details.format()
-                except:
-                    abort(500)
-        # Otherwise, it's a new chapter
-        else:
-            chapter_details = Chapter.query.filter(Chapter.id == post_data['id']).one_or_none()
-
-            # If there's no chapter with that ID, abort
-            if(chapter_details is None):
-                abort(404)
-            # If that chapter exists, edit it
-            else:
-                chapter_details.number = post_data['number']
-                chapter_details.title = post_data['title']
-                chapter_details.synopsis = post_data['synopsis']
-
-                # Try to update the database
-                try:
-                    chapter_details.update()
-                    return_object = chapter_details.format()
-                except:
-                    abort(500)
+        # Try to add the new chapter
+        try:
+            insert(new_chapter)
+        except Exception as e:
+            abort(500)
 
         return jsonify({
             'success': True,
