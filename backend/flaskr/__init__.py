@@ -17,6 +17,22 @@ def create_app():
 
         return response
 
+    # Format and paginate stories
+     def paginate_stories(stories, current_page):
+         stories_per_page = 10
+         start_index = stories_per_page * (current_page - 1)
+         formatted_stories = []
+
+          for story in stories:
+             formatted_story = {
+                 'id': story.id,
+                 'title': story.title,
+                 'synopsis': story.synopsis
+             }
+             formatted_stories.append(formatted_story)
+
+          return formatted_stories[start_index:(start_index+9)]
+
     # Routes
     # -----------------------------------------------------------------
     # Endpoint: GET /
