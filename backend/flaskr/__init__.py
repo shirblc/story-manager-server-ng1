@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
 
-from models import database_setup, Story, Chapter, insert, update, delete_single, delete_all
+from models import database_setup, Story, Chapter, insert, update_chapters, delete_single, delete_all
 
 # Create Flask app
 def create_app():
@@ -107,7 +107,7 @@ def create_app():
 
                 # Try to update the database
                 try:
-                    update(story_details)
+                    story_details.update()
                     return_object = story_details.format()
                 except:
                     abort(500)
@@ -126,7 +126,7 @@ def create_app():
 
                 # Try to update the database
                 try:
-                    update(chapter_details)
+                    chapter_details.update()
                     return_object = chapter_details.format()
                 except:
                     abort(500)
@@ -153,6 +153,53 @@ def create_app():
         return jsonify({
             'success': True,
             'chapter': formatted_chapter
+        })
+
+
+    # Endpoint: POST /story/<story_id>/chapters/<chapter_id>
+    # Description: Edits an existing chapter.
+    # Parameters: story_id - the ID of the story to fetch.
+    #             chapter_id - the ID of the chapter to fetch.
+    @app.route('/story/<story_id>/chapters/<chapter_number>')
+    def edit_chapter(story_id, chapter_number):
+        chapter = Chapter.query.filter(Chapter.story_id == story_id).filter(Chapter.number == chapter_number).one_or_none()
+        edited_chapter = json.loads(request.data)
+        return_chapter = {}
+
+        # Checks whether this story has a chapter in that location
+        if(chapter is None):
+            abort(404)
+        # If there is, updates the story
+        else:
+            # If the chapter number wasn't changed
+            if(chapter.id == edited_chapter.id):
+                chapter.number = edited_chapter.number
+                chapter.title = edited_chapter.title
+                chapter.synopsis = edited_chapter.synopsis
+
+                # Try to update the database
+                try:
+                    chapter.update()
+                    return_chapter = chapter.format()
+                except Exception as e:
+                    abort(500)
+            # If the chapter number was changed
+            else:
+                original_chapter = Chapter.query.get(edited_chapter.id)
+                chapters_to_shift = Chapter.query.filter(Chapter.story_id == story_id).filter(Chapter.number >= edited_chapter.number).all()
+
+                for chapter in chapters_to_shift:
+                    chapter.number += 1
+
+                try:
+                    update_chapters(chapters_to_shift)
+                    return_chapter = original_chapter.format()
+                except Exception as e:
+                    abort(500)
+
+        return jsonify({
+            'success': True,
+            'chapter': return_chapter
         })
 
 
