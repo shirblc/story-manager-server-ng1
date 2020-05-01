@@ -7,7 +7,7 @@
 
 //librarian service to deal with exporting the changes the user makes to their stories
 angular.module('StoryManager')
-	.service('librarian', [function() {
+	.service('librarian', ['$http', function($http) {
 		//variable declaration
 		var vm = this;
 		this.myStories = {
@@ -15,16 +15,24 @@ angular.module('StoryManager')
 		};
 		
 		/*
-		Function Name: updateStories()
-		Function Description: 
-		Parameters: stories - the updated stories array (including the new/updated story/chapters or
-							without the deleted story/chapters).
+		Function Name: addStory()
+		Function Description: Adds a new story.
+		Parameters: story - the new story. 
+							   updatedStories - the updated stories array (including the new story).
 		----------------
 		Programmer: Shir Bar Lev.
 		*/
-		this.updateStories = function(stories)
-		{	
-			vm.myStories.stories = stories;
+		this.addStory = function(story, updatedStories)
+		{
+			$http({
+					method: 'POST',
+					url: 'http://localhost:5000/',
+					data: JSON.stringify(story)
+				}).then(function(response) {
+					return response.data;
+				});
+			
+			vm.myStories.stories = updatedStories;
 			vm.postToCache();
 		}
 		

@@ -97,7 +97,7 @@ angular.module("StoryManager")
 			};
 			
 			vm.stories.push(newStory);
-			librarian.updateStories(vm.stories);
+			librarian.addStory(newStory, vm.stories);
 			
 			document.getElementById("modalBox").className = "off";
 			document.getElementById("addPopUp").classList.remove("on");
