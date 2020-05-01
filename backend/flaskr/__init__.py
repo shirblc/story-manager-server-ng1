@@ -226,6 +226,34 @@ def create_app():
             'chapter': return_chapter
         })
 
+    # Endpoint: DELETE /story/<story_id>/chapters/<chapter_number>
+    # Description: Deletes a chapter.
+    # Parameters: story_id - the ID of the story to delete.
+    #             chapter_number - the number of the chapter to delete.
+    @app.route('/story/<story_id>/chapters/<chapter_number>', methods=['DELETE'])
+    def delete_chapter(story_id, chapter_number):
+        chapter = Chapter.query.filter(Chapter.story_id == story_id).filter(Chapter.number == chapter_number).one_or_none()
+
+        # If a chapter with that ID doesn't exist, abort
+        if(chapter is None):
+            abort(404)
+        # If it does, try to delete it
+        else:
+            chapter_id = chapter.id
+
+            # Try to delete the chapter
+            try:
+                delete_single(Chapter, chapter)
+            # If there's an error deleting, abort
+            except Exception as e:
+                abort(500)
+
+        return jsonify({
+            'success': True,
+            'deleted': chapter_id
+        })
+
+
 
     # Error Handlers
     # -----------------------------------------------------------------
