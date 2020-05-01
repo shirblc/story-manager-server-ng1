@@ -136,6 +136,30 @@ def create_app():
             'updated': return_object
         })
 
+    # Endpoint: DELETE /story/<story_id>
+    # Description: Deletes a story.
+    # Parameters: story_id - the ID of the story to delete.
+    @app.route('/story/<story_id>', methods=['DELETE'])
+    def delete_story(story_id):
+        story = Story.query.filter(Story.id == story_id).one_or_none()
+
+        # If a story with this ID doesn't exist, abort
+        if(story is None):
+            abort(404)
+        # If there is a storry with that ID
+        else:
+            # Try to delete the story
+            try:
+                delete_single(Story, story_id)
+            # If there's an error deleting, abort
+            except Exception as e:
+                abort(500)
+
+        return jsonify({
+            'success': True,
+            'deleted': story_id
+        })
+
     # Endpoint: GET /story/<story_id>/chapters/<chapter_id>
     # Description: Gets the details of a specific chapter within a story.
     # Parameters: story_id - the ID of the story to fetch.
