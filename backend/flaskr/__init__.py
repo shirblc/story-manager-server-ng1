@@ -254,7 +254,6 @@ def create_app():
         })
 
 
-
     # Error Handlers
     # -----------------------------------------------------------------
     # Bad request error handler

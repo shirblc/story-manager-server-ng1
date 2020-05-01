@@ -46,23 +46,23 @@ class Story(db.Model):
 
         return story
 
-	# Updates an existing database record.
-	def update(self):
-		# Try to update the object's data in the database
-		try:
-			db.session.commit()
-			updated_obj = obj.format()
-		# If there's an error, abort and rollback
-		except Exception as e:
-			db.session.rollback()
-		# Close the connection either way
-		finally:
-			db.session.close()
+    # Updates an existing database record.
+    def update(self):
+        # Try to update the object's data in the database
+        try:
+            db.session.commit()
+            updated_obj = obj.format()
+        # If there's an error, abort and rollback
+        except Exception as e:
+            db.session.rollback()
+        # Close the connection either way
+        finally:
+            db.session.close()
 
-		return jsonify({
-			'success': True,
-			'updated': updated_obj
-		})
+        return jsonify({
+            'success': True,
+            'updated': updated_obj
+        })
 
 # Chapter Model
 class Chapter(db.Model):
@@ -83,23 +83,23 @@ class Chapter(db.Model):
 
         return chapter
 
-	# Updates an existing database record.
-	def update(self):
-		# Try to update the object's data in the database
-		try:
-			db.session.commit()
-			updated_obj = obj.format()
-		# If there's an error, abort and rollback
-		except Exception as e:
-			db.session.rollback()
-		# Close the connection either way
-		finally:
-			db.session.close()
+    # Updates an existing database record.
+    def update(self):
+        # Try to update the object's data in the database
+        try:
+            db.session.commit()
+            updated_obj = obj.format()
+        # If there's an error, abort and rollback
+        except Exception as e:
+            db.session.rollback()
+        # Close the connection either way
+        finally:
+            db.session.close()
 
-		return jsonify({
-			'success': True,
-			'updated': updated_obj
-		})
+        return jsonify({
+            'success': True,
+            'updated': updated_obj
+        })
 
 
 # Database management methods
