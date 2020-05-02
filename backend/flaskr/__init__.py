@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
+import json
 
 from models import database_setup, Story, Chapter, insert, update_chapters, delete_single, delete_all
 
@@ -56,7 +57,7 @@ def create_app():
     @app.route('/', methods=['POST'])
     def addStory():
         new_story_data = json.loads(request.data)
-        new_story = Story(title=new_story_data['title'], synopsis=new_story_dat['synopsis'])
+        new_story = Story(title=new_story_data['title'], synopsis=new_story_data['synopsis'])
 
         # Try to add the new story
         try:

@@ -32,7 +32,7 @@ angular.module("StoryManager")
 			{
 				var storyDetails = loadData[i];
 				var story = {
-					title: storyDetails.name, 
+					title: storyDetails.title, 
 					synopsis: storyDetails.synopsis,
 					id: storyDetails.id
 				};
@@ -91,7 +91,7 @@ angular.module("StoryManager")
 		{
 			var newStory = {
 				"id": vm.numStories + 1,
-				"name": document.getElementById("storyTitle").value,
+				"title": document.getElementById("storyTitle").value,
 				"synopsis": document.getElementById("storySynopsis").value,
 				"chapters": []
 			};
