@@ -11,12 +11,11 @@ angular.module('StoryManager')
 	.controller('storyCtrl', ['$stateParams', 'librarian', 'loadData', '$state', function($stateParams, librarian, loadData, $state) {
 		//variable declaration
 		var vm = this;
-		this.stories = loadData;
-		var storyDetails = loadData[$stateParams.id-1];
-		this.storyName = storyDetails.name;
-		this.storySynopsis = storyDetails.synopsis;
-		this.chapters = storyDetails.chapters;
-		this.storyID = storyDetails.id;
+		this.storyDetails = loadData;
+		this.storyName = this.storyDetails.name;
+		this.storySynopsis = this.storyDetails.synopsis;
+		this.chapters = this.storyDetails.chapters;
+		this.storyID = this.storyDetails.id;
 		this.chapter = loadChapterData();
 		this.forDeletion;
 		//the chapter being edited.
@@ -50,7 +49,8 @@ angular.module('StoryManager')
 			vm.storySynopsis =  document.getElementById("storySynopsis").value;
 			vm.stories[vm.storyID-1].name = vm.storyName;
 			vm.stories[vm.storyID-1].synopsis = vm.storySynopsis;
-			librarian.updateStories(vm.stories);
+			
+			librarian.updateStory(vm.storyDetails);
 		};
 		
 		/*
@@ -136,31 +136,47 @@ angular.module('StoryManager')
 		*/
 		this.changeChapterDetails = function()
 		{
-			var chapterNumber = document.getElementById("chapterID").value;
+			var chapterID = document.getElementById("chapterID").value;
+			var editedChapter =  {
+				id: chapterID,
+				number: document.getElementById("chapterNum").value, 
+				title: document.getElementById("chapterTitle").value, 
+				synopsis: document.getElementById("chapterSynopsis").value
+			}
 			
-			//checks whether there's already a chapter there
-			//if there is
-			if(vm.chapters[chapterNumber-1])
+			//if the chapter's number wasn't changed
+			if(editedChapter.number == vm.chapter.number && editedChapter.id == vm.chapter.id)
 				{
-					vm.chapters.splice(chapterNumber-1, 0, {
-						number: chapterNumber, 
-						title: document.getElementById("chapterTitle").value, 
-						synopsis: document.getElementById("chapterSynopsis").value
-					});
-					
-					vm.chapters.forEach(function(chapter, index) {
-						chapter.number = index + 1;
-					});
+					vm.chapter.name = editedChapter.title;
+					vm.chapter.synopsis = editedChapter.synopsis;
+					vm.chapters[vm.chapter.number-1] = editedChapter;
 				}
-			//if there isn't
 			else
 				{
-					vm.chapters[chapterNumber-1].name = document.getElementById("chapterTitle").value;
-					vm.chapters[chapterNumber-1].synopsis = document.getElementById("chapterSynopsis").value;
+					//checks whether there's already a chapter there
+					//if there is, put it in the new location and move all chapters from there on forward
+					if(vm.chapters[vm.chapter.number-1])
+						{
+							vm.chapters.splice(vm.chapter.number-1, 0, editedChapter);
+							
+							vm.chapters.forEach(function(chapter, index) {
+								if(index > vm.chapter.number)
+									{
+										chapter.number = index + 1;
+									}
+							});
+						}
+					//if there isn't
+					else
+						{
+							vm.chapters[vm.chapter.number-1].number = editedChapter.number;
+							vm.chapters[vm.chapter.number-1].name = editedChapter.title;
+							vm.chapters[vm.chapter.number-1].synopsis = editedChapter.synopsis;
+						}
 				}
 			
-			vm.stories[vm.storyID-1].chapters = vm.chapters;
-			librarian.updateStories(vm.stories);
+			vm.storyDetails.chapters = vm.chapters;
+			librarian.editChapter(editedChapter, vm.storyID);
 			
 			vm.changeState();
 		}
@@ -204,16 +220,17 @@ angular.module('StoryManager')
 			//if there was, places the chapter in the given place
 			//it there wasn't, simply adds it at the end of the current chapters array
 			var numChapter = (document.getElementById("chapterID").value) ? (document.getElementById("chapterID").value) : (vm.chapters.length + 1);
+			var newChapter = {
+					number: numChapter, 
+					title: document.getElementById("chapterTitle").value, 
+					synopsis: document.getElementById("chapterSynopsis").value
+				}
 			
 			//checks if there's already a chapter there
 			//if there is
 			if(vm.chapters[numChapter-1])
 				{
-					vm.chapters.splice(numChapter-1, 0, {
-						number: numChapter, 
-						title: document.getElementById("chapterTitle").value, 
-						synopsis: document.getElementById("chapterSynopsis").value
-					});
+					vm.chapters.splice(numChapter-1, 0, newChapter);
 					
 					vm.chapters.forEach(function(chapter, index) {
 						chapter.number = index + 1;
@@ -223,15 +240,11 @@ angular.module('StoryManager')
 			else
 				{
 					//adds the chapter to the array in the story controller and sends it to the librarian
-					vm.chapters.push({
-						number: numChapter, 
-						title: document.getElementById("chapterTitle").value, 
-						synopsis: document.getElementById("chapterSynopsis").value
-					});
+					vm.chapters.push(newChapter);
 				}
 			
-			vm.stories[vm.storyID-1].chapters = vm.chapters;
-			librarian.updateStories(vm.stories);
+			vm.storyDetails.chapters = vm.chapters;
+			librarian.addChapter(newChapter, vm.storyID);
 			
 			//removes the modal box and popup
 			document.getElementById("modalBox").className = "off";

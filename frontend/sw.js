@@ -1,3 +1,4 @@
+
 //install event listener
 this.addEventListener("install", function(event) {
 	event.waitUntil(
@@ -5,7 +6,7 @@ this.addEventListener("install", function(event) {
 		caches.open("story-mgr-v1").then(function(cache) {
 			//site assets to cache
 			let toCache = [
-				'index.html',
+				'/index.html',
 				'/views/chapterEdit.html',
 				'/views/libraryMgr.html',
 				'/views/settings.html',
@@ -16,7 +17,6 @@ this.addEventListener("install", function(event) {
 				'/js/controllers/libraryCtrl.js',
 				'/js/controllers/settingsCtrl.js',
 				'/js/controllers/storyCtrl.js',
-				'/data/stories.json',
 				'/css/styles.css',
 				'/css/Noteworthy-Lt.ttf'
 			];
@@ -33,11 +33,17 @@ this.addEventListener("install", function(event) {
 //fetch event listener
 this.addEventListener("fetch", function(event) {
 	let reqUrl = event.request.url;
+	
+	//if the request is for a browser-sync component, skip checking the cache
+	if(reqUrl.includes("browser-sync")) {
+		return;
+	}
+	
 	let urlToGet;
 	
 	//if the requested page is the home page
 	if(reqUrl.pathname == "/")
-		urlToGet = "index.html";\
+		urlToGet = "index.html";
 	else
 		urlToGet = reqUrl;
 	

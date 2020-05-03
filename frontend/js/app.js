@@ -18,7 +18,7 @@ angular
 			loadData: function($http) {
 				return $http({
 					method: 'GET',
-					url: '/server/stories.json'
+					url: 'http://localhost:5000/'
 				}).then(function(response) {
 					return response.data.stories;
 				});
@@ -35,9 +35,9 @@ angular
 			loadData: function($http) {
 				return $http({
 					method: 'GET',
-					url: '/server/stories.json'
+					url: 'http://localhost:5000/story/{id}'
 				}).then(function(response) {
-					return response.data.stories;
+					return response.data.story;
 				});
 			}
 		},
@@ -52,9 +52,9 @@ angular
 			loadData: function($http) {
 				return $http({
 					method: 'GET',
-					url: '/server/stories.json'
+					url: 'http://localhost:5000/story/{id}'
 				}).then(function(response) {
-					return response.data.stories;
+					return response.data.story;
 				});
 			}
 		},
@@ -70,9 +70,9 @@ angular
 			loadData: function($http) {
 				return $http({
 					method: 'GET',
-					url: '/server/stories.json'
+					url: 'http://localhost:5000/story/{id}/chapters/{chapterID}'
 				}).then(function(response) {
-					return response.data.stories;
+					return response.data.chapter;
 				});
 			}
 		},
@@ -83,7 +83,18 @@ angular
 angular
 .module('StoryManager').$inject = ['$http'];
 
+// register service worker
+var serviceWorker;
 if(navigator.serviceWorker)
 	{
-		navigator.serviceWorker.register("/sw.js");
+		navigator.serviceWorker.register("/sw.js", { scope: '/' }).then(function(reg) {
+			serviceWorker = reg;
+			// if there's no service worker controlling the page, reload to let the new service worker take over
+			if(!navigator.serviceWorker.controller)
+				{
+					window.location.reload();
+				}
+		}).catch(function(err) {
+			console.log(err);
+		});
 	}

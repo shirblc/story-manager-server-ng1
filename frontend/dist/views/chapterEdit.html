@@ -25,7 +25,8 @@
 			<!-- Edit the selected chapter -->
 			<div id="editChapter">
 				<h3>Edit Chapter Details</h3>
-				<span class="formTitle">Chapter Number:</span> <input type="text" value="{{ story.chapter.number }}" id="chapterID">
+				<span class="formTitle">Chapter ID:</span> <input type="text" value="{{ story.chapter.id }}" id="chapterID" readonly>
+				<span class="formTitle">Chapter Number:</span> <input type="text" value="{{ story.chapter.number }}" id="chapterNum">
 				<br>
 				<span class="formTitle">Chapter Title:</span> <input type="text" value="{{ story.chapter.title }}" id="chapterTitle">
 				<br>

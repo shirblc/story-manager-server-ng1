@@ -32,7 +32,7 @@ angular.module("StoryManager")
 			{
 				var storyDetails = loadData[i];
 				var story = {
-					title: storyDetails.name, 
+					title: storyDetails.title, 
 					synopsis: storyDetails.synopsis,
 					id: storyDetails.id
 				};
@@ -91,13 +91,13 @@ angular.module("StoryManager")
 		{
 			var newStory = {
 				"id": vm.numStories + 1,
-				"name": document.getElementById("storyTitle").value,
+				"title": document.getElementById("storyTitle").value,
 				"synopsis": document.getElementById("storySynopsis").value,
 				"chapters": []
 			};
 			
 			vm.stories.push(newStory);
-			librarian.updateStories(vm.stories);
+			librarian.addStory(newStory, vm.stories);
 			
 			document.getElementById("modalBox").className = "off";
 			document.getElementById("addPopUp").classList.remove("on");
