@@ -6,7 +6,7 @@ this.addEventListener("install", function(event) {
 		caches.open("story-mgr-v1").then(function(cache) {
 			//site assets to cache
 			let toCache = [
-				'index.html',
+				'/index.html',
 				'/views/chapterEdit.html',
 				'/views/libraryMgr.html',
 				'/views/settings.html',
@@ -17,7 +17,6 @@ this.addEventListener("install", function(event) {
 				'/js/controllers/libraryCtrl.js',
 				'/js/controllers/settingsCtrl.js',
 				'/js/controllers/storyCtrl.js',
-				'/data/stories.json',
 				'/css/styles.css',
 				'/css/Noteworthy-Lt.ttf'
 			];
