@@ -119,6 +119,8 @@ angular.module('StoryManager')
 		Programmer: Shir Bar Lev.
 		*/
 		this.postToCache = function() {
-			navigator.serviceWorker.controller.postMessage(vm.myStories);
+			if(serviceWorker) {
+				serviceWorker.controller.postMessage(vm.myStories);
+			}
 		}
 }]);

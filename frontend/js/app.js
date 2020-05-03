@@ -83,7 +83,18 @@ angular
 angular
 .module('StoryManager').$inject = ['$http'];
 
+// register service worker
+var serviceWorker;
 if(navigator.serviceWorker)
 	{
-		navigator.serviceWorker.register("/sw.js");
+		navigator.serviceWorker.register("/sw.js", { scope: '/' }).then(function(reg) {
+			serviceWorker = reg;
+			// if there's no service worker controlling the page, reload to let the new service worker take over
+			if(!navigator.serviceWorker.controller)
+				{
+					window.location.reload();
+				}
+		}).catch(function(err) {
+			console.log(err);
+		});
 	}
