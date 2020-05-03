@@ -33,6 +33,12 @@ this.addEventListener("install", function(event) {
 //fetch event listener
 this.addEventListener("fetch", function(event) {
 	let reqUrl = event.request.url;
+	
+	//if the request is for a browser-sync component, skip checking the cache
+	if(reqUrl.includes("browser-sync")) {
+		return;
+	}
+	
 	let urlToGet;
 	
 	//if the requested page is the home page
