@@ -37,7 +37,7 @@ angular
 					method: 'GET',
 					url: 'http://localhost:5000/story/{id}'
 				}).then(function(response) {
-					return response.data.stories;
+					return response.data.story;
 				});
 			}
 		},
@@ -54,7 +54,7 @@ angular
 					method: 'GET',
 					url: 'http://localhost:5000/story/{id}'
 				}).then(function(response) {
-					return response.data.stories;
+					return response.data.story;
 				});
 			}
 		},
@@ -72,7 +72,7 @@ angular
 					method: 'GET',
 					url: 'http://localhost:5000/story/{id}/chapters/{chapterID}'
 				}).then(function(response) {
-					return response.data.stories;
+					return response.data.chapter;
 				});
 			}
 		},
