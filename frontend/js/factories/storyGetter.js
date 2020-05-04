@@ -10,7 +10,7 @@ angular.module('StoryManager')
 	//returns 
 		return {
 			getStories:  function getStories() {
-				return $http.get('http://localhost:5000/');
+				return $http.get('http://localhost:5000/stories');
 			}
 		}
 	}

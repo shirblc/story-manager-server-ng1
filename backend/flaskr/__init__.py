@@ -252,6 +252,23 @@ def create_app():
             'deleted': chapter_id
         })
 
+    # Endpoint: GET /stories
+    # Description: Gets the storyGetter factory the full details of all stories
+    #              (for offline storage).
+    # Parameters: None.
+    @app.route('/stories')
+    def get_stories():
+        stories = Story.query.all()
+        formatted_stories = []
+
+        for story in stories:
+            formatted_stories.append(story.format())
+
+        return jsonify({
+            'success': True,
+            'stories': formatted_stories
+        })
+
 
     # Error Handlers
     # -----------------------------------------------------------------
