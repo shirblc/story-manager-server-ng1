@@ -7,7 +7,7 @@
 
 angular
 .module('StoryManager', ['ui.router'])
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider, $http) {
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider, $stateParams, $http) {
 	$urlRouterProvider.otherwise('/');
 	
 	//home state (main/library page)
@@ -32,10 +32,10 @@ angular
 		templateUrl: '/views/storyMgr.html',
 		url: '/story/{id}',
 		resolve: {
-			loadData: function($http) {
+			loadData: function($http, $stateParams) {
 				return $http({
 					method: 'GET',
-					url: 'http://localhost:5000/story/{id}'
+					url: 'http://localhost:5000/story/' + $stateParams.id
 				}).then(function(response) {
 					return response.data.story;
 				});
@@ -49,10 +49,10 @@ angular
 		templateUrl: '/views/storyEdit.html',
 		url: '/story/{id}/edit-story',
 		resolve: {
-			loadData: function($http) {
+			loadData: function($http,  $stateParams) {
 				return $http({
 					method: 'GET',
-					url: 'http://localhost:5000/story/{id}'
+					url: 'http://localhost:5000/story/' + $stateParams.id
 				}).then(function(response) {
 					return response.data.story;
 				});
@@ -67,10 +67,10 @@ angular
 		templateUrl: '/views/chapterEdit.html',
 		url:'/story/{id}/edit-story/edit-chapter/{chapterID}',
 		resolve: {
-			loadData: function($http) {
+			loadData: function($http, $stateParams) {
 				return $http({
 					method: 'GET',
-					url: 'http://localhost:5000/story/{id}/chapters/{chapterID}'
+					url: `http://localhost:5000/story/${$stateParams.id}/chapters/${$stateParams.chapterID}`
 				}).then(function(response) {
 					return response.data.chapter;
 				});
@@ -82,6 +82,10 @@ angular
 
 angular
 .module('StoryManager').$inject = ['$http'];
+
+//Injecting UI-Router stateParams
+angular
+.module('StoryManager').$inject = ['$stateParams'];
 
 // register service worker
 var serviceWorker;
