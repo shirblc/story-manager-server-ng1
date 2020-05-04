@@ -12,7 +12,7 @@ angular.module('StoryManager')
 		//variable declaration
 		var vm = this;
 		this.storyDetails = loadData;
-		this.storyName = this.storyDetails.name;
+		this.storyName = this.storyDetails.title;
 		this.storySynopsis = this.storyDetails.synopsis;
 		this.chapters = this.storyDetails.chapters;
 		this.storyID = this.storyDetails.id;

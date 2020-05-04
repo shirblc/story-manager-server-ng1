@@ -71,7 +71,7 @@ angular.module('StoryManager')
 		*/
 		this.addChapter = function(chapter, storyID)
 		{
-			vm.myStories.stories[storyID-1].chapters.push(chapter);
+			vm.myStories[storyID-1].chapters.push(chapter);
 			
 			// Sends the new chapter to the server
 			$http({
@@ -96,7 +96,7 @@ angular.module('StoryManager')
 		*/
 		this.editChapter = function(chapter, storyID)
 		{
-			vm.myStories.stories[storyID-1].chapters[chapter.number-1] = chapter;
+			vm.myStories[storyID-1].chapters[chapter.number-1] = chapter;
 			
 			// Sends the new chapter to the server
 			$http({
