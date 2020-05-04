@@ -35,7 +35,7 @@ this.addEventListener("fetch", function(event) {
 	let reqUrl = event.request.url;
 	
 	//if the request is for a browser-sync component, skip checking the cache
-	if(reqUrl.includes("browser-sync")) {
+	if(reqUrl.includes("browser-sync") || event.request.method != "GET") {
 		return;
 	}
 	
