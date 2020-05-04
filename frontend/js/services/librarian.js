@@ -121,7 +121,7 @@ angular.module('StoryManager')
 		*/
 		this.postToCache = function() {
 			if(serviceWorker) {
-				serviceWorker.controller.postMessage(vm.myStories);
+				navigator.serviceWorker.controller.postMessage(vm.myStories);
 			}
 		}
 }]);
