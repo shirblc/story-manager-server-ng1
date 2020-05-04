@@ -7,12 +7,13 @@
 
 //librarian service to deal with exporting the changes the user makes to their stories
 angular.module('StoryManager')
-	.service('librarian', ['$http', function($http) {
+	.service('librarian', ['$http', 'storyGetter', function($http, storyGetter) {
 		//variable declaration
 		var vm = this;
-		this.myStories = {
-			stories: []
-		};
+		this.myStories;
+		this.getStories = storyGetter.getStories().then(function(response) {
+			vm.myStories = response.data.stories;
+		});
 		
 		/*
 		Function Name: addStory()
