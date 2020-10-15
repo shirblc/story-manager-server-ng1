@@ -31,7 +31,7 @@
     "gulp-jasmine-browser": "^4.1.0",
     "gulp-order": "^1.2.0",
     "gulp-sourcemaps": "^2.6.5",
-    "idb": "^5.0.5",
+    "idb": "^5.0.6",
     "jasmine-core": "^3.6.0",
     "puppeteer": "^5.3.1"
   }
