@@ -22,18 +22,18 @@
     "gulp-babel": "^8.0.0",
     "gulp-postcss": "^9.0.0",
     "gulp-uglify": "^3.0.2",
-    "postcss": "^8.1.2"
+    "postcss": "^8.1.7"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.28",
     "angular": "^1.8.2",
-    "autoprefixer": "^10.0.1",
+    "autoprefixer": "^10.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-jasmine-browser": "^4.1.0",
     "gulp-order": "^1.2.0",
-    "gulp-sourcemaps": "^2.6.5",
+    "gulp-sourcemaps": "^3.0.0",
     "idb": "^5.0.7",
     "jasmine-core": "^3.6.0",
-    "puppeteer": "^5.4.1"
+    "puppeteer": "^5.5.0"
   }
 }
