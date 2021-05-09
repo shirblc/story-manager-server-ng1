@@ -17,23 +17,23 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
-    "browser-sync": "^2.26.13",
+    "autoprefixer": "^10.2.5",
+    "browser-sync": "^2.26.14",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-jasmine-browser": "^4.1.0",
+    "gulp-order": "^1.2.0",
     "gulp-postcss": "^9.0.0",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "postcss": "^8.1.7"
+    "jasmine-core": "^3.7.1",
+    "postcss": "^8.1.7",
+    "puppeteer": "^9.1.1"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.29",
     "angular": "^1.8.2",
-    "autoprefixer": "^10.2.5",
-    "gulp-concat": "^2.6.1",
-    "gulp-jasmine-browser": "^4.1.0",
-    "gulp-order": "^1.2.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "idb": "^5.0.8",
-    "jasmine-core": "^3.7.1",
-    "puppeteer": "^5.5.0"
+    "idb": "^5.0.8"
   }
 }
