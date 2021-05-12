@@ -28,7 +28,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "jasmine-core": "^3.7.1",
-    "postcss": "^8.1.7",
+    "postcss": "^8.2.10",
     "puppeteer": "^9.1.1"
   },
   "dependencies": {
