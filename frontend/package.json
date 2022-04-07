@@ -15,10 +15,10 @@
   "author": "Shir Bar Lev",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.16.7",
-    "@babel/preset-env": "^7.16.8",
-    "autoprefixer": "^10.4.2",
-    "browser-sync": "^2.27.7",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "autoprefixer": "^10.4.4",
+    "browser-sync": "^2.27.9",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
@@ -28,8 +28,8 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "jasmine-core": "^3.10.1",
-    "postcss": "^8.4.5",
-    "puppeteer": "^13.0.1"
+    "postcss": "^8.4.12",
+    "puppeteer": "^13.5.2"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.30",
