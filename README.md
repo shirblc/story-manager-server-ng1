@@ -1,5 +1,7 @@
 # Story Manager
 
+Important: AngularJS has reached EOL in January 2022. As a result, Story Manager was migrated to Angular. You can find the migrated project [here](https://github.com/shirblc/story-manager-ng2). Full-stack support will be added soon.
+
 ## Version
 
 Version 1 (currently in development).
